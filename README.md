@@ -73,17 +73,17 @@ EX: tests/systemSettings <br>
 
 Siga os casos de testes dentro da pasta "tests"
 
-## Desdobramento, desenvolvimento
-
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
-
 ## Contribuindo
 
-* [alefcarvalho] (https://gitlab.com/alefcarvalho/nfs-bh-legacy/tree/master) - A estrutura da web usada
+* **Alef Carvalho **<br><br>
+
+* [alefcarvalho] (https://gitlab.com/alefcarvalho/nfs-bh-legacy/tree/master) - A estrutura da biblioteca usada
 
 ## Autores
 
-* ** Wander Alves ** - * Trabalho final * - [Linkedin] (https://www.linkedin.com/in/wander-alves-935b6314b)
+* ** Wander Alves **<br><br>
+
+[Linkedin] (https://www.linkedin.com/in/wander-alves-935b6314b)
 
 ## Licença
 
@@ -92,7 +92,6 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.m
 ## Agradecimentos
 
 * Link Certificação Digital pelo apoio ao conceder tempo e recurso para a implementação da biblioteca.
-
   https://www.linkcertificacao.com.br/
 
 
