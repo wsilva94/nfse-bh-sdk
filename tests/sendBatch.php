@@ -40,15 +40,15 @@ try {
 
     //set tomador
     $parameter->rps->taker->type = 1;
-    $parameter->rps->taker->name = 'O ARTESAO LTDA';
-    $parameter->rps->taker->document = 10584004000164;
-    $parameter->rps->taker->municipalRegistration = 01055600016;
+    $parameter->rps->taker->name = 'Krypton Servicos Contabeis S/S';
+    $parameter->rps->taker->document = 42784421000109;
+    $parameter->rps->taker->municipalRegistration = 10876045716;
     //set tomador endereço
-    $parameter->rps->taker->address->address = 'Rua Guaranésia';
-    $parameter->rps->taker->address->number = 348;
+    $parameter->rps->taker->address->address = 'R Visconde De Taunay';
+    $parameter->rps->taker->address->number = 173;
     $parameter->rps->taker->address->complement = '';
-    $parameter->rps->taker->address->neighborhood = 'Colegio Batista';
-    $parameter->rps->taker->address->zipCode = 31110170;
+    $parameter->rps->taker->address->neighborhood = 'Sao Lucas';
+    $parameter->rps->taker->address->zipCode = 30240300;
     $parameter->rps->taker->address->state = 'MG';
     $parameter->rps->taker->address->municipalityCode = 3106200;
 

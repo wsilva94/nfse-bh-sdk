@@ -34,16 +34,16 @@ try {
     $nfse->provider->address->state = 'MG';
 
     //tomador
-    $nfse->taker->name = 'CONECTA COMERCIO E IMPORTACAO DE LAMPADAS LTDA';
-    $nfse->taker->document = 10562334000293;
+    $nfse->taker->name = 'Krypton Servicos Contabeis S/S';
+    $nfse->taker->document = 42784421000109;
     $nfse->taker->municipalRegistration = false;
     //tomador endereço
-    $nfse->taker->address = 'RUA 7';
-    $nfse->taker->number = 'A 69';
-    $nfse->taker->neighborhood = 'CIVIT II';
-    $nfse->taker->zipCode = 29168067;
-    $nfse->taker->city = 'Serra';
-    $nfse->taker->state = 'Es';
+    $nfse->taker->address = 'R Visconde De Taunay';
+    $nfse->taker->number = '173';
+    $nfse->taker->neighborhood = 'Sao Lucas';
+    $nfse->taker->zipCode = 30240300;
+    $nfse->taker->city = 'Belo Horizonte';
+    $nfse->taker->state = 'MG';
 
     //dados de serviço
     $nfse->service->description = 'APOIO NA EMISSAO DE CERTIFICADO DIGITAL';
