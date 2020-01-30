@@ -22,8 +22,8 @@ composer require nfse/nfse-bh-sdk
 
 * Siga os passos abaixo para consumir corretamente a biblioteca <br><br>
 
-1 - Adicione seu certificado digital .PFX no seguinte diretório <br>
-    * EX: storage/certificates/56142462000106/certificate.pfx <br><br>
+1 - Adicione seu certificado digital .PFX no seguinte diretório <br><br>
+    * EX: storage/certificates/56142462000106/certificate.pfx <br>
     * pasta: 56142462000106 é numero do CNPJ da sua empresa. <br><br>
 
 2 - Sempre que desejar usar algum END-POINT implementado, passe sempre os parâmetros de configuração.<br>
