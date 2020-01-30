@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <Prestador>
+        <Cnpj>{{Cnpj}}</Cnpj>
+        <InscricaoMunicipal>{{InscricaoMunicipal}}</InscricaoMunicipal>
+    </Prestador>
+    <PeriodoEmissao>
+        <DataInicial>{{DataInicial}}</DataInicial>
+        <DataFinal>{{DataFinal}}</DataFinal>
+    </PeriodoEmissao>
+    <Tomador>
+        <CpfCnpj>
+            {{docTomador}}
+        </CpfCnpj>
+    </Tomador>
+</ConsultarNfseEnvio>

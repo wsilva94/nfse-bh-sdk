@@ -1,0 +1,742 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>NFse {NFSE_NUMERO} </title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font: 14px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            text-align: center;
+        }
+
+        .teste {
+            font: 14px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+        }
+
+        #moldura {
+            position: relative;
+            width: 646px;
+            margin: 0 auto;
+        }
+
+        #container {
+            text-align: left;
+            margin: 0px auto;
+            border: 1px solid #BEDCE2;
+            position: relative;
+            width: 646px;
+        }
+
+        #cancelada {
+            z-index: 1000;
+            position: absolute;
+            top: 150px;
+            left: 50px;
+        }
+
+        .logotipo {
+            margin: 3px 8px 3px 5px;
+        }
+
+        .hh1 {
+            font: 18px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            background: #F2F2F2;
+            text-align: center;
+            padding: 2px 0px;
+            font-weight: normal;
+        }
+
+        .hh2 {
+            font: bold 13px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            border-bottom: 1px solid #65A0C0;
+            margin: 3px 0 0 2px;
+        }
+
+        .hh3 {
+            font: 12px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            margin: 3px 0px 0px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 18px;
+            background: #F2F2F2;
+            text-align: center;
+            padding: 2px 0px;
+            font-weight: normal;
+        }
+
+        h2 {
+            border-bottom: 1px solid #65A0C0;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        h3 {
+            font-size: 12px;
+            margin: 3px 0px 0px;
+        }
+
+        .numeroDestaque {
+            font-size: 18px;
+            color: #c32b16;
+        }
+
+        .valorLiquido {
+            font-size: 13px;
+            color: #c32b16;
+            padding: 5px 5px 2px;
+        }
+
+        .issRetido {
+            font-size: 14px;
+            color: #c32b16;
+            padding: 5px 5px 2px;
+        }
+
+        .cnpjPrincipal {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .bordaInferior {
+            border-bottom: 1px solid #AFD1D8;
+        }
+
+        .bordaLateral {
+            border-right: 1px solid #AFD1D8;
+        }
+
+        .subTitulo {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .box01 {
+            width: 490px;
+            background: url('data:image/gif;base64,R0lGODlh6gHIAMQAAL/i2ej18tbs5v7//8Hj2vX7+f3+/s3o4ePy7tXs5sDi2fL599nu6e/49vz+/dzv6uv28/b7+un18uLy7szo4dPr5ff7+sjm3snm38fm3vv9/cPk28bl3f///wAAAAAAACH5BAAAAAAALAAAAADqAcgAAAX/YCeOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwSCwaj8ikcpkcQAQUBWBKrVqv2Kx2y+16v+CweEwum8/otHrNbrvfAAVFABm0CodKYGFn+v+AgYKDhIVBAwsBFQcFKxMECIaSk5SVlpeYNggEEykPDBGZoqOkpaanPBEMDycSCQ6osbKztLWTDgkSJQYcDba/wMHCwzUNFwYkAQLEzM3Oz7QCASTS0NbX2NmAyiQYjdrg4eLjNRYZJBsa5Ovs7esGBCQA7vT19s3zI/n3/P3+pPs6BPxHsKDBPwEHHlzIsGGPhA4jSpwoAyLFixgzCpSnsaPHhRY/ihxZLyTJkyjB/5lMybIls5UuY8qcBXOmzZuZauLcyZOQzp5Agyb5KbSo0R9EjypdWiMp06dQVziNSrXqRn1Ws2rliHWr16pTv4rdGXasWZllz6pNmXatW5Ft38rNGHeuXYl17+oFyXWvX495/wq+F3iw4XaFDysWl3ixY2yNH0t2FnmyZWGVL2uulXmzZ1SdP4seFXq0aUulT6s2lHq160CtX8teEnu2bSO1b+sOknu3bx69fwu/EXy48Yp9jyuHnXy5c9rNn0vHHX26dd7Vr2sHnn27d+Ldv4tH3nW8+abhz6tPUXz97/bud8OPf3s+/dn277/Or381//6n/QfgaAIO+FmBBm6GYP+Cly3I4GQOPvhYhBIuRmGFh12I4WAabvhXhx7uBWKId41I4lwmnvhWiiquxWKLZ70I41gyzvhVjTZuhWOOWe3II1jp/eibj0JCRWSRTB2JpFJKLmlUk04KBWWUQE1JJU9WXolTllraxGWXaAUJpmlfjtlSmWayJWaanqHJJkluvgnXmnJaFmedHd2JJ1107umYnn5SBGigePVJqGGDHtpQooryVV6jmjEKaUGSTvpPpZb2g2mmhBnKKYqefrpiqKK6SGqpMZ6KKo2qrnpjq67qCGusPc5KK5CP3iqirboayWuvSf4KLJPCDvtkscZKiWyyVS7LLJbOPrtltNJ6SW3RtWHmii2r2m77arfeygpuuLWOSy6uIih0brnprivWpu7aAm+8tMxLryz23gvatfrmyW+/fJoLcFH5DkzavwZPVHDCmCzMMGoIP7xoxBI72m7FRzmMMWsUb0yQxh4PAnLIzAlMsksjn+xHyipDZ3LLKLEMMxIyz0zdyzbPiXPOgHXM8zo1/4zdzkJjFHTRPhyNNHdEL11o0047pHTUOExNtQ1WX01D1lqTd3HXPUMN9sc+j41P2WYTw3XaLKzNtgpuv41C3HKbQHfdyamL90H5hAAAOw==') no-repeat;
+            text-align: center;
+            margin: 0px 5px 0px 0px;
+        }
+
+        .box01 table {
+            width: 480px;
+            text-align: left;
+            margin: 0px auto;
+        }
+
+        .box02 {
+            width: 646px;
+            background: url('data:image/gif;base64,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') no-repeat;
+            text-align: center;
+            margin: 0px 5px 0px 0px;
+        }
+
+        .box02 table {
+            width: 636px;
+            text-align: left;
+            margin: 2px auto 0px;
+        }
+
+        .box03 {
+            background: url('data:image/gif;base64,R0lGODlhkQBfANUAANbs5uj18v7///3+/vX7+en18tXs5sHj2tzv6vL59+/49s3o4czo4ePy7ur18tTs5snm3/z+/fv9/cjm3vb7+tPr5dnu6f/+/sDi2cfm3sPk2/j8++Ly7uv28+Dx7dru6cLj2+Tz7/T6+ff7+sbl3b/i2f///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACRAF8AAAb/QJNwSCwaj8ikcslsOp/QqHRKrVqvVUEHwMCUvuCweEwum8/otHrN/mIYgI6ASVhUAok5ds/vTwUJARULBEocBw1+iouMTA0HHEgIFhSNlpeWFBYIRgUGEZihonwRBgVEAyQKo6ytUwoTA0MBAK62t0wAAUO6uL6/s7VCEIXAxrYjGUMaEsfOrAMHQyXP1aLUQtjW24za2tzgfN7h5Hvj5ehU5+nsT+vt8Erv8fRF8/X49/j0+vvw/f7YAQyIbiBBcgYPgkuocBvDhtUeQnQmcaKxihZ/YcyIayNHWx4/tgopchTJkqFOorykcmWjli4XwYzpZyZNcdNuPrOp8wrP2J5VfgKdInRolKJG3eVM2nEpU5BOn46MKtUk1aopr2JlqXXry65eZYINW3MsWZzZzmJCqjat27bdzMINKncu0bp2j+LNq/QtX3N7/zJh25awWsNnEZNVHJaxV8dbIWOVXJWyVMtCLhg1rLlxYMHyPoNGgplp6aTamI22EgHEEGKrqxCAwGtX7Cm0gt2e0kvIgAmrdj9RkEHWEE/GhS8ZYMoIgg8blCvZ8IGTEQEeEEk/EuKABz1H6jwokGB7AgcPFohgIsCBAQZt4sufT7++GgYPHIDfzh9XEAA7');
+            height: 95px;
+            width: 145px;
+            margin: 10px 0px 0px 3px;
+        }
+
+        .box03 h4 {
+            font-size: 18px;
+            margin: 7px 0px 0px 7px;
+        }
+
+        .box03 p {
+            font-size: 13px;
+            margin: 0px 0px 2px 7px;
+        }
+
+        .box04 {
+            font: 11px "Trebuchet MS", Verdana, Arial;
+            color: #175366;
+            margin: 2px 3px;
+            padding: 2px;
+            background: #f3f3f3;
+        }
+
+        .box05 {
+            width: 314px;
+            background: url('data:image/gif;base64,R0lGODlhOgEsAcQAALXd3+Tz9M/p6v7//7fe4P3+/vP6+uXz9M7p6szn6dbs7fD4+NLr7Of09cTk5rbd38Xk5t7w8ez39/v+/d3w8fT6+/r9/bnf4L/i4/b6+73g4r7i48Di5P///wAAAAAAACH5BAAAAAAALAAAAAA6ASwBAAX/YCeOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwWBo0BI4HYMlsOp/QqHRKrVqv2Kx2y+16v+DrwyFoDFoGSCKwOBPf8Lh8TocNFoEExLCiECJ1gYKDhIU5EQQUKQoMFYaPkJGSghUMCicHCBOTnJ2enzYTCAclBRoSoKmqq6sSGAUkAQKstLW2hQIBJLm3vb6/QLIkHHzAxsfILxkbJBcWydDR0gUEJADS2NnA1yPc2t/gqd4d4+Hm54bj5ejs7XHq7vHyQ/Dz9vc59fj7/C/6/QADlvgnsGA/ggYT2kOosGE7hg4jhoMosSI2ihYzIsOosaMvjh5D0gIpsiQokiZT/05CqbJlOmsuY56EKbPmSpo2c77sprMnIZY+g/IAKrToDaJGk8pAqrRpC6ZOo6KAKrUqz6tWs8agqjUq165Nv4JNKnZs0bJmg6JN23Mt25xu39aMKzcm3bot7+JNqXdvyb5+QwIO3HEw4YyGD1dMrDgi48YNH0NOKHlywcqWA2LOfBAnZ7KeP58NLVot6dJtT6OGq3r13Nau7cKOnXc2bb62b//NrVsw796FfwNHLHz44uLGHSNPHnk5c8rOn1+OLl0z9eqdsWL3rX178O7eiYMPf3w8eeXmzzdPrx46+/bT38O3Ln9+dhHr7BvcrN8W//4jXQfgRAIO+M1/BopTYP+CFy3IYDQIPthJhBLeVF+F6FCIISQabrgTfh7u02GIg4xIYiAmnkhHiirKwWKLcLwIIxEyzihEjTYCgWOOPuzI41AO/jjThUJuE2SREx6JpIUgLqmNj07WAGWUM0xJ5VZKXlmIlVq6wGWXLHwJpgpijjlVlmauiGaaLq7JZoxuvkljnHLeSGedOt6JZ4967gkkkX4+Uiaeg9ZZqJyHvpkom4um2aiZj44ZKZiTdlmplpdemSmVm0bZqZOfLhkqkqMWWaqQp/6YKo+r5tiqja/OGCuMs7ZYq4q3npgribuG2KuHv24YLIbDVlishMc+mCyDyybYrIHPDhgtgNP2V63/ftfal+1828LXbXvfqhfueeOSV25453qX7nbrYtdude9KF+9z8zJXb3L3GpfvcPsC129v/+oW8G0D01ZwbAe7lvBqC6PWcGkPixbxZxNzVnFmF1uW8WQbQ9ZxYx8rFvJhIxNWcmAn+5XyXivj1XJdL8sV81szs1VzWjeblfNYO4PVc1c/axV0VkNbVXRVR0uVtFd9BppP004fBXXUUk5NdZVWX40loFrXsbRTX4eVdddejk12mGafTWbaap/JddtvhK2U3KC9DTc9bN/tWX56o5h33+T83TfdRhE+mt2A84l44n82ybgghgsVuWmLP/505ZZLjXnmVW/OOdaef761U+Oiwxl66WWfjjraqq++duuuu0167HnCTvtAgus9uU+7p2b77drxDfzlsw+/Q+86Ic/a78Mrb5PzrzEPPPQyUS+b9Ldb75L2tWFPO/cqgY9bByEAADs=') no-repeat;
+            text-align: center;
+            margin: 6px 5px 0px 0px;
+        }
+
+        .box05 table {
+            width: 296px;
+            text-align: left;
+            margin: 2px auto 2px;
+        }
+
+        .box05 table td {
+            padding: 2px 0;
+        }
+
+        .boxDados td {
+            padding: 5px 4px;
+        }
+
+        .tableValores {
+            font-size: 12px;
+            padding: 2px 0 4px;
+        }
+
+        .tableTributos {
+            background: #ccd698;
+            font-size: 10px;
+            margin: 2px 5px 5px 5px;
+        }
+
+        .tableTributos th {
+            background: #eeeeee;
+            text-align: center;
+            padding: 1px 3px;
+        }
+
+        .tableTributos td {
+            background: #FFFFFF;
+            text-align: right;
+            padding: 1px 3px;
+        }
+
+        ul {
+            margin: 2px 0px 2px 15px;
+        }
+
+        li {
+            margin: 2px 0px 2px 3px;
+        }
+
+        .linhaDivisao {
+            display: none;
+        }
+
+        .dataEmissao {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .servicos {
+            padding: 0 2px;
+            font-size: 11px;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        .logo {
+            max-width: 200px;
+            padding: 5px;
+        }
+       /* {PRINT_CSS}*/
+    </style>
+</head>
+
+<body>
+    <br>
+    <table id="container" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td align="center" style="text-align: center;"><br>
+                    <P class="title">NFS-e - NOTA FISCAL DE SERVIÇO ELETRÔNICA</P>
+                    <hr class="linhaDivisao" />
+                </td>
+            </tr>
+            <tr>
+                <td class="bordaInferior">
+                    <table width="100%" border="0" cellspacing="2" cellpadding="0">
+                        <tr class="teste">
+                            <td width="25%" class="bordaLateral">
+                                <span class="numeroDestaque">N.º: {ANO} / {NFSE_NUMERO} </span>
+                            </td>
+                            <td width="31%" class="bordaLateral">
+                                <span class="subTitulo">Emitida em:<br></span>
+                                <span class="dataEmissao">{DATA_EMISSAO}</span>{HORA_EMISSAO}
+                            </td>
+                            <td width="17%" class="bordaLateral">
+                                <span class="subTitulo">Competência:</span><br>
+                                <span class="dataEmissao">
+                                    {COMPETENCIA}
+                                </span>
+                            </td>
+                            <td width="27%">
+                                <span class="subTitulo">Código de Verificação:<br></span>
+                                <span class="dataEmissao">{CODIGO_VERIFICACAO}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td valign="top">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="160%">
+                                                    <img class="logo"
+                                                        src="data:image/png;base64,{LOGO_BASE_64}"
+                                                        alt="">&nbsp;
+                                                </td>
+                                                <td width="491">
+                                                    <div class="hh3"> {RAZAO_SOCIAL_PRESTADOR} </div>
+                                                    <table width="100%" cellspacing="1" class="teste">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span class="cnpjPrincipal" id="j_id">
+                                                                        CPF/CNPJ: {CPF_CNPJ_PRESTADOR}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="cnpjPrincipal" id="j_id2">
+                                                                        Inscrição Municipal:
+                                                                        {INSCRICAO_MUNICIPAL_PRESTADOR}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    {LOGRADOURO_PRESTADOR} ,
+                                                                    {NUMERO_ENDERECO_PRESTADOR} ,
+                                                                    {BAIRRO_PRESTADOR} ,
+                                                                    Cep: {CEP_PRESTADOR}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <span id="j_id3">
+                                                                        {MUNICIPIO_PRESTADOR}
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span id="j_id5">
+                                                                        {ESTADO_PRESTADOR}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Telefone: {TELEFONE_PRESTADOR}
+                                                                </td>
+                                                                <td>
+                                                                    Email: {EMAIL_PRESTADOR}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            {NFE_SUBSTITUIDA}
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr class="linhaDivisao" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="box02">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <div class="hh2">
+                                                                            Tomador do(s) Serviço(s)
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="teste">
+                                                                    <td width="52%">
+                                                                        <span class="cnpjPrincipal" id="j_id27">
+                                                                            <span id="form:j_id58">
+                                                                                CPF/CNPJ: {CPF_CNPJ_TOMADOR}
+                                                                            </span>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td width="48%">
+                                                                        <span class="cnpjPrincipal" id="j_id33">
+                                                                            <span id="form:j_id64">
+                                                                                Inscrição Municipal:
+                                                                                {INSCRICAO_MUNICIPAL_TOMADOR}
+                                                                            </span>
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="teste">
+                                                                    <td colspan="2">
+                                                                        <span class="cnpjPrincipal">
+                                                                            {RAZAO_SOCIAL_TOMADOR}
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="teste">
+                                                                    <td colspan="2">
+                                                                        {LOGRADOURO_TOMADOR} ,
+                                                                        {NUMERO_ENDERECO_TOMADOR} ,
+                                                                        {BAIRRO_TOMADOR} ,
+                                                                        Cep: {CEP_TOMADOR}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="teste">
+                                                                    <td>
+                                                                        <span id="j_id41">
+                                                                            <span id="form:j_id72">
+                                                                                {MUNICIPIO_TOMADOR}
+                                                                            </span>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span id="j_id44">
+                                                                            <span id="form:j_id75">
+                                                                                {ESTADO_TOMADOR}
+                                                                            </span>
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="teste">
+                                                                    <td>
+                                                                        Telefone: {TELEFONE_TOMADOR}
+                                                                    </td>
+                                                                    <td>
+                                                                        Email: {EMAIL_TOMADOR}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <img src="data:image/gif;base64,R0lGODlhhgIKAMQAAOj18v7//9Ts5v3+/ur18tbs5tXs5un18vX7+dru6cnm38zo4cHj2u/49uDx7c3o4fL599zv6vj8++Py7vT6+cjm3uTz78fm3r/i2f///wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACGAgoAAAXHYJYpiGieaKqubOu+cCzPdG3feK7vfO//wKBwSCwaWwiFqQA4Op/QqHRKrVqv2Ky2CiiYutuweEwum8/otLrINA0qjbV8Tq/b7/i8uHEZnA4GfnqDhIWGh4iJVwMGBykRCRKKk5SVlpeYdhIJESoBDgwTmaOkpaanqDIWDA4BLAgPAgcQqbW2t7i5aBAEAg8UJwSeBAYLGMfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+MLAgSuJwK68PHy8/RUIQA7"
+                                                            alt="." class="noprint" />
+                                                    </div>
+                                                    <hr class="linhaDivisao" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr class="teste">
+            </tr>
+            <tr>
+                <td>
+                    <div class="box02">
+                        <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        <div class="hh2">
+                                            Discriminação do(s) Serviço(s)
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="servicos">
+                                        {DESCRIMINACAO}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <img src="data:image/gif;base64,R0lGODlhhgIKAMQAAOj18v7//9Ts5v3+/ur18tbs5tXs5un18vX7+dru6cnm38zo4cHj2u/49uDx7c3o4fL599zv6vj8++Py7vT6+cjm3uTz78fm3r/i2f///wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACGAgoAAAXHYJYpiGieaKqubOu+cCzPdG3feK7vfO//wKBwSCwaWwiFqQA4Op/QqHRKrVqv2Ky2CiiYutuweEwum8/otLrINA0qjbV8Tq/b7/i8uHEZnA4GfnqDhIWGh4iJVwMGBykRCRKKk5SVlpeYdhIJESoBDgwTmaOkpaanqDIWDA4BLAgPAgcQqbW2t7i5aBAEAg8UJwSeBAYLGMfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+MLAgSuJwK68PHy8/RUIQA7"
+                            alt="." class="noprint" />
+                        <hr class="linhaDivisao" />
+                    </div>
+
+                    <div class="box04">
+                        <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="subTitulo">
+                                            Código de Tributação do Município (CTISS)
+                                        </span>
+                                        <p class="teste">
+                                            {CODIGO_TRIBUTACAO_MUNICIPAL} -
+                                            {DESCRICAO_TRIBUTACAO_MUNICIPAL}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="linhaDivisao" />
+                    </div>
+
+                    <div style="margin: 0px 5px;">
+                        <p class="teste">
+                            <span class="subTitulo">
+                                Subitem Lista de Serviços LC 116/03 / Descrição:
+                            </span>
+                        </p>
+                        <p class="teste"> {ITEM_LISTA_SERVICO} / {DESCRICAO_LISTA_SERVICO}</p>
+                        <hr class="linhaDivisao" />
+                    </div>
+
+                    <div class="box04">
+                        <span id="j_id106"> </span>
+                        <table border="0" cellpadding="2" cellspacing="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" width="50%">
+                                        <p class="teste">
+                                            <span class="subTitulo">
+                                                Cod/Município da incidência do ISSQN:
+                                            </span>
+                                        </p>
+                                        <p class="teste">
+                                            {CODIGO_MUNICIPIO_GERADOR} - {NOME_MUNICIPIO_GERADOR}
+                                        </p>
+                                    </td>
+                                    <td valign="top" width="50%">
+                                        <span class="subTitulo">
+                                            Natureza da Operação:
+                                        </span>
+                                        <p class="teste">
+                                            {NATUREZA_OPERACAO}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <span id="form:j_id124">
+                        {REGIME_ESPECIAL_TRIBUTACAO}
+                    </span>
+                    <hr class="linhaDivisao" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td valign="top" class="bordaInferior">
+                                <div class="box05"><br>
+                                    <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td class="hh2" width="44%">
+                                                    Valor dos serviço(s):
+                                                </td>
+                                                <td class="hh2" width="56%" align="right">
+                                                    {VALOR_SERVICOS}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                        class="tableValores">
+                                                        <tr>
+                                                            <td width="131" class="bordaInferior">
+                                                                (-) Descontos:
+                                                            </td>
+                                                            <td width="165" align="right" class="bordaInferior">
+                                                                {VALOR_DESCONTO_CONDICIONADO}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (-) Retenções Federais:
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {TOTAL_RETENCOES_FEDERAIS}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (-) ISS Retido na Fonte:
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {VALOR_ISS_RETIDO}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="valorLiquido">
+                                                                <b>Valor Líquido:</b>
+                                                            </td>
+                                                            <td align="right" class="valorLiquido">
+                                                                <b>{VALOR_LIQUIDO}</b>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <img src="data:image/gif;base64,R0lGODlhOgELAMQAAOTz9P7//8/p6v3+/ubz9M3p6s7p6uXz9PP6+sXk5uz397fe4NTr7MDi5MTk5tvu8PD4+Nbs7ff7/PL5+t/x8b7i497w8b/i47Xd3////wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAA6AQsAAAWcYJY1iGieaKqubOu+cCzPdG3feK7vKtKcAgBvSCwaj8ikcukCCE5OpnRKrVqv1uBpcFFgv+CweDxVVAaogwFNbrvf8PfAcFBFGJK4fs/v8yQMESsBDwsWfoiJiokUCw8BLQgJBQcQi5eYmVQQBAUJEzABBAYOGKanqKmqq6ytrq+wsbKztLW2t7i5uru0DgUEkJrCw8TFxsfIySchADs="
+                                        alt="." class="noprint" />
+                                </div>
+                            </td>
+                            <td class="bordaInferior">
+                                <div class="box05"><br>
+                                    <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="42%" class="hh2">
+                                                    Valor dos serviço(s):
+                                                </td>
+                                                <td width="58%" align="right" class="hh2">
+                                                    {VALOR_SERVICOS}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                        class="teste">
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (-) Deduções:
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {DEDUCOES}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (-) Desconto Incondicionado:
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {VALOR_DESCONTO_INCONDICIONADO}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (=) Base de Cálculo:
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {BASE_CALCULO}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bordaInferior">
+                                                                (x) Alíquota::
+                                                            </td>
+                                                            <td align="right" class="bordaInferior">
+                                                                {ALIQUOTA_SERVICOS}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="valorLiquido">
+                                                                <b>(=) Valor do ISS:</b>
+                                                            </td>
+                                                            <td align="right" class="valorLiquido">
+                                                                <b>{VALOR_ISS}
+                                                                </b>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <img src="data:image/gif;base64,R0lGODlhOgELAMQAAOTz9P7//8/p6v3+/ubz9M3p6s7p6uXz9PP6+sXk5uz397fe4NTr7MDi5MTk5tvu8PD4+Nbs7ff7/PL5+t/x8b7i497w8b/i47Xd3////wAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAAA6AQsAAAWcYJY1iGieaKqubOu+cCzPdG3feK7vKtKcAgBvSCwaj8ikcukCCE5OpnRKrVqv1uBpcFFgv+CweDxVVAaogwFNbrvf8PfAcFBFGJK4fs/v8yQMESsBDwsWfoiJiokUCw8BLQgJBQcQi5eYmVQQBAUJEzABBAYOGKanqKmqq6ytrq+wsbKztLW2t7i5uru0DgUEkJrCw8TFxsfIySchADs="
+                                        alt="." class="noprint" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <span id="form:j_id156">
+                <tr>
+                    <td class="bordaInferior">
+                        <span style="margin: 0px 5px;" class="subTitulo">Retenções Federais:</span><br />
+
+                        <span id="form:j_id158">
+                            <span style="margin: 0px 5px;" class="subTitulo">PIS:</span>
+                            <span class="teste">
+                                {VALOR_PIS}
+                            </span>
+                        </span>
+
+                        <span id="form:j_id161">
+                            <span style="margin: 0px 5px;" class="subTitulo">COFINS:</span>
+                            <span class="teste">
+                                {VALOR_COFINS}
+                            </span>
+                        </span>
+
+                        <span id="form:j_id164">
+                            <span style="margin: 0px 5px;" class="subTitulo">IR:</span>
+                            <span class="teste">
+                                {VALOR_IR}
+                            </span>
+                        </span>
+
+                        <span id="form:j_id167">
+                            <span style="margin: 0px 5px;" class="subTitulo">CSLL:</span>
+                            <span class="teste">
+                                {VALOR_CSLL}
+                            </span>
+                        </span>
+
+                        <span id="form:j_id170">
+                            <span style="margin: 0px 5px;" class="subTitulo">INSS:</span>
+                            <span class="teste">
+                                {VALOR_INSS}
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </span>
+            {OPITANTE_PELO_SIMPLES}
+            <tr>
+                <td>
+                    <table class="tableNoBorder" border="0" cellpadding="4" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="9%">
+                                    <img src="data:image/gif;base64,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"
+                                        alt="Bras&atilde;o Prefeitura" />
+                                </td>
+                                <td width="82%">
+                                    <span class="subTitulo">Prefeitura de Belo Horizonte - Secretaria Municipal de
+                                        Finan&ccedil;as</span>
+                                    <p class="teste">
+                                        Rua Esp&iacute;rito Santo, 605 - 2&ordm; andar - Centro - CEP: 30160-919 - Belo
+                                        Horizonte MG.
+                                        <br />
+                                        Tel.: 156 / e-mail: atendimentofinancas@pbh.gov.br
+                                        <br />
+                                    </p>
+                                </td>
+                                <td width="9%">
+                                    <img src="data:image/gif;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAvAFgDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAAcEBQYCAwgB/8QAPxAAAQMDAwIDAwYLCQAAAAAAAQIDBAUGEQAHEiExEyJBCBRRFTI4YXGBFjNXdpGUlbGywdIYIyRCQ1JTVKP/xAAaAQACAwEBAAAAAAAAAAAAAAABBQAEBgID/8QALREAAQMCBAUDAwUAAAAAAAAAAQACAxExBBIhQQUTUWFxIpHwFDKBUqHB0eH/2gAMAwEAAhEDEQA/AHTvFcV1SNyKPYNt1pNCRIgLnyZwb5r4p8Q8R69A0e2M576yPh3T+XCZ+zXdX24X0m6P+bD/APDK1FhU6E5DZWu2LhfUpAJcad8izjun+6PQ/adKOI4yaB7Wx0161/hZyXNJK8kn7iLusAOhVX4d0/lwmfs13Wg23uG7qLupBs6u3KLlp9XppnRZK2fDW3jnjv1/01DBz3B6ddfkajU15wh23K3DaSlS3JEqWlpppCQSpSlFrAAAJ1HtJiPV96rUrVCqUCq06nUVcKU9GkJKm3AHz1QcLCTzThXHB1OH4rETuPMAp2Bv+UGNcyRhaTWo3dauuhKfOk5dMiOvcSqR6pXJtOhpCShTJUrzcEYGB9+nHpV1mLVYO4dTqiLXdq8Z1IQhKmsoPlR5gcHqMEaPF2kxsp+rW52PTVN8cCWt8/LKrYqNXXtvU3HJ8lxhua2iM8pw88Z8wznOPm9Pt1IvK6oUyzKRCptTeM5nwveAkLQRhshWVEAHr9evMWzXvwYrMhVLdYVNktqZhNpyUgKUSeI7AZwNWt622V2VR2qZRUfKCQ17wGI48X8Uc8sDPzvj66T5MTyXUB+0XrW5t8sqOWXIadO/U2TNa6tIJ/2jXWuWgQ0gHuEjXWtaLJ2jRo0aKiRu4X0m6P8Amw//AAytQ4UqmJiMpcqNxoWEAKS0lPAHHZPn7am7g/SeoSCUpLtuPNt8iByUUygAM+uTrtiFuIwwhhl2ottNpCUITLACQOgA83bWf4wxxkaQ0m9hXp3CzpB5klBX1HauwXkxOoBjzYk2TckqLNiuxX23EI+YtOCR5+hHcaTN47bVK13xPo1wQZ6ERRPa8N73eWhjJHieGognHE54FWMemnd7vuR/2an+uD+rS83ZaWze0OK7jx41lvIfSFBRbVxkHBx69R+ka64U+SpY5pAvqKa+5VTHxNfGC9pqLG1/dar2VtwrluGtzrar09yotMwjKYefOXUcVoSUlXdQPMHrk9NZi7b1m2R7TVZq6C87BDrTU5lOSFMKabBOPiDgj6wB66hex8sp3TlAf5qS6P8A0aP8tMc7fy6rvdeki4Kapu3qzSzGZlKWnCnP8OUlPXPIFBI6d06d7IQHEYjBRZScwffpQG/ZY+17jkQ3t569RJxJ5lyJIQrIAW+6ErT9ysj7tZ6q2qLd2ioO6FNrdWbuKXMHiul4cepc7dOWfIM5Jzk5Gtft1tXcFIod/wBu1sMwG6hHbjwZrriQ0+pCllKh1yAfLnpkA6rn7V3Zr9kUnbV+14sWnwZIc+Ui+kpKcrwSQoggcz80EnA6d9Cuy8zDKYxnYa0dTQ6Ozftpuu/aTtSExbkDcRubP+VK0/GRIZLifAQDGJPABOR+LHcnudX24dvUza7YuqsUioVF564HI7JVKdSopJHJQTxSMAoSsevfWk9oqz63WtsaNQrdgu1J+FNZ5JQUg+GhlxHI5I9SP06h782dc95zLPt+nQnk0xpXKoS0lJSwTxTnBIJKUhZwO+ddUV2fClj5nMZ6iAB5dUH/AFVnsqvzKLXrpsepuKMiMpuU2kn6uKzj7C1o13ae3l4WZvnAq6ZdQuOmzIqm59TfUAsckqASrksqOChs5+HT00aITLhTXsgMbwRlJGvS483TP3E28ti+2Y6a9EcL0bIZkMOcHEg9057EfUQdYr+znt9/yVr9aT/Rpw6NSisS4HDSuzvYCV8kbxWDQtvZza12tU59Jf6MTU1XiOWOqFjwjxV3x1wR29QMZT6k1PjyLfs+20wH6gjhLlvzC84GEkKUOZCUtN+UFSsdh1OOmvt2uUqnVykyKVVojcuFJRwdacHRQ/kR3BHUHqNKyDsdR4VcTGirDdtKSl2WwXFKkzXQrKWnFYADCcA8R1Ue/YEAhIsXwWQS1gplPYVH5pbvfys37PljSUyY9Yp0mRDozCwtcxILbtYcT6DPVMUHsD1Wep9AnYbmUx6Pd1KqT05x9MqWlLTJHlZSnh0HX1JJ9NNJlptllDLLaG220hKEIGEpA6AADsNZLcOiVKrzaI7AZS4mLJK3iVhPFOUdep69j21R4lCZMOQBUginv/SafQtgw3LZqdPnzzfVUlegMV/dgUuplxyI1FyhtKykA8c+n1n92pezLjiYVVhFxamY0rDSVHPHOc/u163RRLijXii5bfYjS1qZ8JbLqgnHTHqRkYx66n7bW/OodPlLqSm/epj3iLQg5CB8M/Hqe2qUEDxjcxabuJPYgU138LuONwnrTc69tlq9GjRp6mKNGjRqKL//2Q=="
+                                        alt="Bras&atilde;o Prefeitura" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
