@@ -8,7 +8,7 @@ use NFse\Soap\ConsultaSituacaoLoteRps;
 use NFse\Soap\ErrorMsg;
 use NFse\Soap\Soap;
 
-class BatchSituationConsultation extends ConsultBase
+class LotStatusConsultation extends ConsultBase
 {
     private $xSoap;
 
