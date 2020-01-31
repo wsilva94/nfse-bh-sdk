@@ -15,7 +15,7 @@ PHP 7.2
 Efetue download utilizando composer
 
 `` ``
-composer require nfse/nfse-bh-sdk
+composer require wsilva94/nfse-bh-sdk
 `` ``
 
 ## Começando
