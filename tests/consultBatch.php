@@ -4,10 +4,9 @@ use NFse\Models\lot;
 use NFse\Service\ConsultBatch;
 
 try {
-    $lot = new lot();
-    $lot->rpsLot = 'AF0775697M20e0304bR5pJYe';
+    $protocol = 'AF0775697M20e0304bR5pJYe';
 
-    $sync = new ConsultBatch($settings, $lot->rpsLot);
+    $sync = new ConsultBatch($settings, $protocol);
     $result = $sync->sendConsultation();
 
     dd($result);
