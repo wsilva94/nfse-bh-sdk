@@ -95,7 +95,9 @@ class Rps
             //apend dos dados restantes
             $this->infRps->appendChild($tagDtEmissao);
             $this->infRps->appendChild($tagNatOperacao);
-            $this->infRps->appendChild($tagRegTributacao);
+            if ($lot->rps->regime) {
+                $this->infRps->appendChild($tagRegTributacao);
+            }
             $this->infRps->appendChild($tagSimplesNac);
             $this->infRps->appendChild($tagIncentivCult);
             $this->infRps->appendChild($tagStatus);
