@@ -58,8 +58,6 @@ class ConsultBatch extends ConsultBase
             return (object) $this->errors = ($messages) ? $messages : $wsError->getError();
         } else {
             $wsLote = new ConsultaLoteRps($wsResponse);
-            $reste = $wsLote->getDadosLote();
-            dd($reste);
             return (object) $wsLote->getDadosLote();
         }
     }
