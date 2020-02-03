@@ -79,7 +79,9 @@ class Rps
             $tagTipoRps = $this->xml->createElement('Tipo', $lot->rps->type);
             $tagDtEmissao = $this->xml->createElement('DataEmissao', str_replace(' ', 'T', $lot->rps->date));
             $tagNatOperacao = $this->xml->createElement('NaturezaOperacao', $lot->rps->nature);
-            $tagRegTributacao = $this->xml->createElement('RegimeEspecialTributacao', $lot->rps->regime);
+            if ($lot->rps->regime) {
+                $tagRegTributacao = $this->xml->createElement('RegimeEspecialTributacao', $lot->rps->regime);
+            }
             $tagSimplesNac = $this->xml->createElement('OptanteSimplesNacional', $lot->rps->simple);
             $tagIncentivCult = $this->xml->createElement('IncentivadorCultural', $lot->rps->culturalPromoter);
             $tagStatus = $this->xml->createElement('Status', $lot->rps->status);
@@ -128,8 +130,10 @@ class Rps
             }
 
             // 1 – Microempresa municipal | 2 - Estimativa | 3 – Sociedade de profissionais | 4 – Cooperativa | 5 – MEI – Simples Nacional | 6 – ME EPP – Simples Nacional
-            if (empty($lot->rps->regime) || !in_array($lot->rps->regime, [1, 2, 3, 4, 5, 6])) {
-                throw new \Exception("O regime especial de tributação não foi definido.");
+            if (!is_null($lot->rps->regime)) {
+                if (!in_array($lot->rps->regime, [1, 2, 3, 4, 5, 6])) {
+                    throw new \Exception("O regime especial de tributação não foi definido.");
+                }
             }
 
             // 1 - Sim | 2 - Não
@@ -379,9 +383,12 @@ class Rps
             throw new Exception("O CNPJ do tomador de serviços está em branco ou excede o limite de 14 caractéres.");
         }
 
-        if (empty($lot->rps->taker->municipalRegistration) || strlen($lot->rps->taker->municipalRegistration) > 15) {
-            throw new \Exception("A inscrição municipal do tomador de serviços está em branco ou excede o limite de 15 caractéres.");
+        if ($lot->rps->taker->type == self::CNPJ) {
+            if (empty($lot->rps->taker->municipalRegistration) || strlen($lot->rps->taker->municipalRegistration) > 15) {
+                throw new \Exception("A inscrição municipal do tomador de serviços está em branco ou excede o limite de 15 caractéres.");
+            }
         }
+
     }
 
     /**
