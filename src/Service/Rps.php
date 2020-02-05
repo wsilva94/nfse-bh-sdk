@@ -386,7 +386,7 @@ class Rps
         }
 
         if ($lot->rps->taker->type == self::CNPJ) {
-            if (empty($lot->rps->taker->municipalRegistration) || strlen($lot->rps->taker->municipalRegistration) > 15) {
+            if (strlen($lot->rps->taker->municipalRegistration) > 15) {
                 throw new \Exception("A inscrição municipal do tomador de serviços está em branco ou excede o limite de 15 caractéres.");
             }
         }
