@@ -16,16 +16,20 @@ class PrintPDFNFse
      *
      * @param NFse\Models\NFse;
      */
-    public function __construct(NFse $nfse , string $logo64)
+    public function __construct(NFse $nfse, string $logo64)
     {
         $this->nfse = $nfse;
         $this->logo64 = $logo64;
     }
 
     //gera e retorna o pdf da nota
+    // I - HTML
+    // D - Dowload do PDF
+    // P - IMPRIMIR
+
     public function getPDF($type)
     {
-        if ($type == 'html') {
+        if ($type == 'I') {
             echo $this->getPrintable('I');
         } else {
 
@@ -33,10 +37,14 @@ class PrintPDFNFse
 
                 $mPDF = new Mpdf();
                 $mPDF->SetDefaultFont('chelvetica');
-                $html = $this->getPrintable('P');
-
+                $html = $this->getPrintable($type);
+                if ($this->nfse->cancellationCode) {
+                    $mPDF->SetWatermarkText('NFS-e Cancelada');
+                    $mPDF->showWatermarkText = true;
+                }
                 $mPDF->WriteHTML($html);
-                return $mPDF->Output();
+
+                return $mPDF->Output('NFse.pdf', $type);
             } catch (Exception $e) {
                 throw $e;
             }
@@ -362,7 +370,7 @@ class PrintPDFNFse
 
                 //tomador
                 $this->nfse->taker->name,
-                Utils::mask((string) $this->nfse->taker->document, '##.###.###/####-##'),
+                (strlen($this->nfse->taker->document) > 11)?Utils::mask((string) $this->nfse->taker->document, '##.###.###/####-##') :Utils::mask((string) $this->nfse->taker->document, '###.###.###-##'),
                 ($this->nfse->taker->municipalRegistration) ? Utils::mask((string) $this->nfse->taker->municipalRegistration, '#######/###-#') : 'Não Informado',
 
                 //tomador endereço

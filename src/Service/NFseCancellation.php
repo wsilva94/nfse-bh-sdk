@@ -80,11 +80,7 @@ class NFseCancellation extends ConsultBase
             $wsLote = new CancelamentoNFs($wsResponse);
             $dataCancel = $wsLote->getDataCancelamento();
 
-            if (isset($dataCancel['xmlPedidos'][$this->numNFs])) {
-                Utils::saveAt($this->numNFs . '.xml', $dataCancel['xmlPedidos'][$this->numNFs]);
-            }
-
-            return $dataCancel;
+            return (object) $dataCancel;
         }
     }
 

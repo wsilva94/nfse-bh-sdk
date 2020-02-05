@@ -40,7 +40,7 @@ class Utils
         error_reporting(E_ERROR | E_WARNING | E_PARSE);
     }
 
-    //helper para amazenas os xml's na pasta storage
+/*     //helper para amazenas os xml's na pasta storage
     public static function saveAt($filename, $fileContents)
     {
         $webservice = new WebService();
@@ -55,7 +55,7 @@ class Utils
         $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
         return file_get_contents($filePath);
     }
-
+ */
     /**
      * Função que formata valor em moeda brasileira
      *

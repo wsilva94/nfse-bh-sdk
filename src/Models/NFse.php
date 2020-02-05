@@ -37,6 +37,11 @@ class NFse
     public $verificationCode;
 
     /**
+     *@var int codigo de cancelamento da NFse
+     */
+    public $cancellationCode;
+
+    /**
      *@var int numero da NFse de substitução
      *
      */
