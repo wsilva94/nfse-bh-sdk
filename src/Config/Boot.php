@@ -2,7 +2,7 @@
 
 use Exception;
 use NFse\Config\API;
-use NFse\Config\Certified;
+use NFse\Config\Certificate;
 use NFse\Models\Settings;
 use NFse\Signature\Subscriber;
 
@@ -22,7 +22,7 @@ class Boot
             $this->settings = $settings;
 
             $this->api = new API($this->settings);
-            $this->cert = new Certified($this->settings);
+            $this->cert = new Certificate($this->settings);
             $this->subscriber = new Subscriber($this->settings);
 
         } catch (Exception $e) {

@@ -1,6 +1,6 @@
 <?php namespace NFse\Models;
 
-class Certified
+class Certificate
 {
     /**
      *@var string diretorio onde se encontra os certificados
