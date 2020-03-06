@@ -43,7 +43,7 @@ class Soap extends SoapClient
                     'cache_wsdl' => $this->webservice->cacheWsdl,
                     'stream_context' => stream_context_create([
                         "ssl" => [
-                            'local_cert' => $this->settings->certified->folder . $this->settings->certified->mixedKey,
+                            'local_cert' => $this->settings->certificate->folder . $this->settings->certificate->mixedKey,
                             "verify_peer" => $this->webservice->sslVerifyPeer,
                             "verify_peer_name" => $this->webservice->sslVerifyPeerName,
                         ],

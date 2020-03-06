@@ -18,13 +18,13 @@ try {
     $settings->issuer->codMun = 3106200;
 
     //certificado digital
-    $settings->certified->folder = __DIR__ . '/../storage/certificates/' . $settings->issuer->cnpj . '/';
-    $settings->certified->certFile = 'certificate.pfx';
-    $settings->certified->mixedKey = 'mixedKey.pem';
-    $settings->certified->privateKey = 'privateKey.pem';
-    $settings->certified->publicKey = 'publicKey.pem';
-    $settings->certified->password = '215424958751';
-    $settings->certified->noValidate = true;
+    $settings->certificate->folder = __DIR__ . '/../storage/certificates/' . $settings->issuer->cnpj . '/';
+    $settings->certificate->certFile = 'certificate.pfx';
+    $settings->certificate->mixedKey = 'mixedKey.pem';
+    $settings->certificate->privateKey = 'privateKey.pem';
+    $settings->certificate->publicKey = 'publicKey.pem';
+    $settings->certificate->password = '215424958751';
+    $settings->certificate->noValidate = true;
 
     //dev
     if ($settings->environment == 'homologacao') {
@@ -36,6 +36,5 @@ try {
     $system->init();
 
 } catch (Exception $e) {
-    dd($e);
     throw $e;
 }

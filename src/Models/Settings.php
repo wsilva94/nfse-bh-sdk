@@ -1,7 +1,6 @@
-<?php namespace NFse\Models;
+<?php
 
-use NFse\Models\Certified;
-use NFse\Models\Issuer;
+namespace NFse\Models;
 
 class Settings extends DefaultModel
 {
@@ -18,16 +17,15 @@ class Settings extends DefaultModel
     public $issuer;
 
     /**
-     * Certified.
+     * Certificate.
      *
-     * @var NFse\Models\Certified
+     * @var NFse\Models\Certificate
      */
-    public $certified;
+    public $certificate;
 
     public function __construct()
     {
         $this->issuer = new Issuer();
-        $this->certified = new Certified();
+        $this->certificate = new Certificate();
     }
-
 }

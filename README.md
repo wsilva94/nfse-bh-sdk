@@ -7,29 +7,29 @@ API de emissão, consulta e cancelamento de notas fiscais de serviço via webser
 
 O que você precisa para instalar o software e como instalá-lo
 
-`` ``
-PHP 7.2
-`` ``
+Mínimo ```PHP 7.2```
+
 ### Instalando
 
 Efetue download utilizando composer
 
-`` ``
-composer require wsilva94/nfse-bh-sdk
-`` ``
+```composer require wsilva94/nfse-bh-sdk```
 
 ## Começando
 
-* Siga os passos abaixo para consumir corretamente a biblioteca <br><br>
+* Siga os passos abaixo para consumir corretamente a biblioteca
 
-1 - Adicione seu certificado digital .PFX no seguinte diretório <br><br>
-    * EX: storage/certificates/56142462000106/certificate.pfx <br>
-    * pasta: 56142462000106 é numero do CNPJ da sua empresa. <br><br>
+1 - Adicione seu certificado digital .PFX no seguinte diretório
 
-2 - Sempre que desejar usar algum END-POINT implementado, passe sempre os parâmetros de configuração.<br>
+ ```storage/certificates/{{56142462000106}}/certificate.pfx```
 
-EX: tests/systemSettings <br>
+ "56142462000106" é o CNPJ da empresa.
 
+2 - Sempre que desejar usar algum ENDPOINT implementado, passe sempre os parâmetros de configuração.
+
+ ```tests/systemSettings```
+
+```php
     use Exception;
     use NFse\Config\Boot;
     use NFse\Helpers\Utils;
@@ -47,13 +47,13 @@ EX: tests/systemSettings <br>
         $settings->issuer->codMun = 3106200;
 
         //certificado digital
-        $settings->certified->folder = __DIR__ . '/../storage/certificates/' . $settings->issuer->cnpj . '/';
-        $settings->certified->certFile = 'certificate.pfx';
-        $settings->certified->mixedKey = 'mixedKey.pem';
-        $settings->certified->privateKey = 'privateKey.pem';
-        $settings->certified->publicKey = 'publicKey.pem';
-        $settings->certified->password = '215424958751';
-        $settings->certified->noValidate = true;
+        $settings->certificate->folder = __DIR__ . '/../storage/certificates/' . $settings->issuer->cnpj . '/';
+        $settings->certificate->certFile = 'certificate.pfx';
+        $settings->certificate->mixedKey = 'mixedKey.pem';
+        $settings->certificate->privateKey = 'privateKey.pem';
+        $settings->certificate->publicKey = 'publicKey.pem';
+        $settings->certificate->password = '215424958751';
+        $settings->certificate->noValidate = true;
 
         //dev
         if ($settings->environment == 'homologacao') {
@@ -65,25 +65,22 @@ EX: tests/systemSettings <br>
         $system->init();
 
     } catch (Exception $e) {
-        dd($e);
         throw $e;
     }
+```
 
-## Executando os testes
+## Execução dos testes
 
 Siga os casos de testes dentro da pasta "tests"
 
-## Contribuindo
+## Autor
 
-* **Alef Carvalho **<br><br>
+* **Wander Alves** - [Linkedin](https://www.linkedin.com/in/wander-alves-935b6314b)
 
-* [alefcarvalho] (https://gitlab.com/alefcarvalho/nfs-bh-legacy/tree/master) - A estrutura da biblioteca usada
+## Contribuintes
 
-## Autores
-
-* ** Wander Alves **<br><br>
-
-[Linkedin] (https://www.linkedin.com/in/wander-alves-935b6314b)
+* **Alef Carvalho**  - [GitLab](https://gitlab.com/alefcarvalho)
+* **José Francisco**  - [GitHub](https://github.com/josefcts)
 
 ## Licença
 
@@ -91,8 +88,8 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE.m
 
 ## Agradecimentos
 
-* Link Certificação Digital pelo apoio ao conceder tempo e recurso para a implementação da biblioteca.
-  https://www.linkcertificacao.com.br/
+* [Link Certificação Digital](https://www.linkcertificacao.com.br/) pelo apoio ao me conceder tempo e recursos para a implementação desta biblioteca.
+
 
 
 
