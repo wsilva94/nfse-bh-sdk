@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2",
+        "php": "^7.0",
         "nesbot/carbon": "^2.28",
         "symfony/serializer": "^5.0",
         "symfony/property-access": "^5.0",
