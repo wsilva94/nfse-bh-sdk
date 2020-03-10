@@ -16,7 +16,7 @@
         "nesbot/carbon": "^2.28",
         "symfony/serializer": "^5.0",
         "symfony/property-access": "^5.0",
-        "mpdf/mpdf": "^7",
+        "mpdf/mpdf": "^8.0",
         "league/flysystem": "^1.0"
     },
     "require-dev": {
