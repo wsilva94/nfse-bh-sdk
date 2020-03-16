@@ -4,7 +4,6 @@ use NFse\Models\ConsultNFse as MdlConsultNFse;
 use NFse\Service\ConsultNFSe;
 
 try {
-
     $parameters = new MdlConsultNFse();
     $parameters->startDate = '2017-01-01';
     $parameters->endDate = '2017-05-29';
@@ -15,7 +14,6 @@ try {
     $result = $find->sendConsultation($parameters);
 
     dd($result);
-
 } catch (Exception $e) {
     throw $e;
 }

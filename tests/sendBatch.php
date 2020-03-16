@@ -67,7 +67,6 @@ try {
     $result = $lote->sendLote();
 
     dd($result);
-
 } catch (Exception $e) {
     throw $e;
 }

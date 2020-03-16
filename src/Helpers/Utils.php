@@ -46,7 +46,7 @@ class Utils
             $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
             return file_put_contents($filePath, $fileContents);
         }
-    
+
         //retorna um xml da pasta storage
         public function getFile($filename)
         {

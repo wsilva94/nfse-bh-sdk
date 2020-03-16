@@ -34,7 +34,6 @@ try {
     //efetua o boot no lib
     $system = new Boot($settings);
     $system->init();
-
 } catch (Exception $e) {
     throw $e;
 }

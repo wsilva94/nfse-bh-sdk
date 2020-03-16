@@ -10,7 +10,6 @@ try {
     $result = $sync->sendConsultation();
 
     dd($result);
-
 } catch (Exception $e) {
     throw $e;
 }

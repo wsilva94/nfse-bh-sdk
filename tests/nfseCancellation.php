@@ -3,7 +3,6 @@
 use NFse\Service\NFseCancellation;
 
 try {
-
     $parameters  = (object)[
         'id' => 122, //idPedido
         'numerNFse' => '201700000000001',
@@ -14,7 +13,6 @@ try {
     $result = $result->sendConsultation();
 
     dd($result);
-
 } catch (Exception $e) {
     throw $e;
 }

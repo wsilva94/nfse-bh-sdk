@@ -76,9 +76,8 @@ try {
 
     $nfse->service->simpleNational = false;
 
-    $print = new PrintPDFNFse($nfse , $logoBase64);
+    $print = new PrintPDFNFse($nfse, $logoBase64);
     $print->getPDF('html');
-
 } catch (Exception $e) {
     dd($e);
     throw $e;
