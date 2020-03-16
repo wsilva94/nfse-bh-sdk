@@ -9,7 +9,7 @@
         "name": "Wander Alves",
         "email": "wsilva_94@outlook.com"
     }],
-    "minimum-stability": "stability",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
         "php": "^7.0",
