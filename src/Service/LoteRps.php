@@ -11,7 +11,6 @@ use NFse\Soap\Soap;
 
 class LoteRps
 {
-
     private $xSoap;
     private $loteRps;
     private $xmlLote;
@@ -67,7 +66,6 @@ class LoteRps
         try {
             $this->xSoap->setXML($signedLote);
             $wsResponse = $this->xSoap->__soapCall();
-
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

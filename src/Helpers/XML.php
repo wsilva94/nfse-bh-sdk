@@ -2,7 +2,6 @@
 
 class XML
 {
-
     private static $folder = "";
     private static $content = "";
     private static $instance = null;

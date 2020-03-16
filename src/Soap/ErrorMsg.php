@@ -2,7 +2,6 @@
 
 class ErrorMsg
 {
-
     private $wsResponse;
     private $messages = '';
     private $error;

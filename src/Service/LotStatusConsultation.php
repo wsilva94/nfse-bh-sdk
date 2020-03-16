@@ -29,7 +29,6 @@ class LotStatusConsultation extends ConsultBase
 
         parent::__construct();
         $this->syncModel = $this->callConsultation($settings, $parameters);
-
     }
 
     /**
@@ -41,7 +40,6 @@ class LotStatusConsultation extends ConsultBase
         try {
             $this->xSoap->setXML($this->getXML());
             $wsResponse = $this->xSoap->__soapCall();
-
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
@@ -50,7 +48,6 @@ class LotStatusConsultation extends ConsultBase
         $xmlResponse = simplexml_load_string($wsResponse->outputXML);
         //identifica o retorno e faz o processamento nescessário
         if (is_object($xmlResponse) && isset($xmlResponse->ListaMensagemRetorno)) {
-
             $wsError = new ErrorMsg($xmlResponse);
             $messages = $wsError->getMessages();
 
@@ -60,5 +57,4 @@ class LotStatusConsultation extends ConsultBase
             return (object) $wsLote->getDadosLote();
         }
     }
-
 }

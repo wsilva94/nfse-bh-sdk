@@ -4,7 +4,6 @@ use Exception;
 
 class CURL
 {
-
     private $cURL;
     private $URL;
     private $response;

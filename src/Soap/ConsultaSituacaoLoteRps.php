@@ -1,7 +1,7 @@
 <?php namespace NFse\Soap;
 
-class ConsultaSituacaoLoteRps {
-
+class ConsultaSituacaoLoteRps
+{
     private $wsResponse;
     private $error;
     private $dataLote;
@@ -13,19 +13,21 @@ class ConsultaSituacaoLoteRps {
     ];
 
     //construtor (passar o SOAP response)
-    public function __construct($wsResponse) {
+    public function __construct($wsResponse)
+    {
         $this->wsResponse = $wsResponse;
     }
 
     //retorna os dados de entrada do lote após o envio
-    public function getDadosLote(){
-        if(is_object($this->wsResponse)){
+    public function getDadosLote()
+    {
+        if (is_object($this->wsResponse)) {
             return $this->dataLote = [
                 'numeroLote'       => $this->wsResponse->NumeroLote->__toString(),
                 'situacao'         => $this->wsResponse->Situacao->__toString(),
                 'descricaoSituaco' => $this->situacoes[$this->wsResponse->Situacao->__toString()],
             ];
-        }else{
+        } else {
             $this->error = "Não foi possivel processar a resposta do servidor da prefeitura.";
             return false;
         }

@@ -8,8 +8,10 @@ use NFse\Signature\Subscriber;
 
 class Boot
 {
-
-    private $api, $cert, $subscriber, $settings;
+    private $api;
+    private $cert;
+    private $subscriber;
+    private $settings;
 
     /**
      * construtor que verifica os parâmetros básicos para funcionamento da lib
@@ -24,7 +26,6 @@ class Boot
             $this->api = new API($this->settings);
             $this->cert = new Certificate($this->settings);
             $this->subscriber = new Subscriber($this->settings);
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -45,5 +46,4 @@ class Boot
             throw $e;
         }
     }
-
 }

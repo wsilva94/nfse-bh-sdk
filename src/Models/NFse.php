@@ -71,5 +71,4 @@ class NFse
         $this->taker = new Taker();
         $this->service = new Service();
     }
-
 }

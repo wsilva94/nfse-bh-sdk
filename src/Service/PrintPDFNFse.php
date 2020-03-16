@@ -32,9 +32,7 @@ class PrintPDFNFse
         if ($type == 'I') {
             echo $this->getPrintable('I');
         } else {
-
             try {
-
                 $mPDF = new Mpdf();
                 $mPDF->SetDefaultFont('chelvetica');
                 $html = $this->getPrintable($type);
@@ -275,7 +273,8 @@ class PrintPDFNFse
             </span>';
         }
 
-        $this->html = str_replace([
+        $this->html = str_replace(
+            [
             //css
             '/* {PRINT_CSS}*/',
             //header
@@ -415,7 +414,8 @@ class PrintPDFNFse
                 Utils::formatRealMoney($this->nfse->service->valueINSS),
                 $optanteSimplesNacional,
             ],
-            $this->html);
+            $this->html
+        );
 
         return $this->html;
     }

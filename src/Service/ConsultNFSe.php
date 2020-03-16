@@ -30,7 +30,6 @@ class ConsultNFSe extends ConsultBase
 
         parent::__construct();
         $this->syncModel = $this->callConsultation($settings, (object) [ 'file' => 'consultaNFs']);
-
     }
 
     /**
@@ -84,7 +83,6 @@ class ConsultNFSe extends ConsultBase
      */
     protected function setSearch(MdlConsultNFse $consultNFse): void
     {
-
         if (empty($consultNFse->startDate) || !Utils::isDate($consultNFse->startDate, 'Y-m-d', 'America/Sao_Paulo')) {
             throw new \Exception("A data inicial informada na pesquisa não é válida.");
         }
@@ -113,5 +111,4 @@ class ConsultNFSe extends ConsultBase
             ->set('docTomador', $tagTaker)
             ->save();
     }
-
 }

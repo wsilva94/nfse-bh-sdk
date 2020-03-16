@@ -4,7 +4,6 @@ use NFse\Soap\ConsultaLoteRps;
 
 class ConsultaNFs extends ConsultaLoteRps
 {
-
     private $NFs;
 
     //construtor (passar o SOAP response)
@@ -36,7 +35,6 @@ class ConsultaNFs extends ConsultaLoteRps
 
             //retorna o array montado
             return $this->dataLote;
-
         } else {
             $this->error = "Não foi possivel processar a resposta do servidor da prefeitura.";
             return false;

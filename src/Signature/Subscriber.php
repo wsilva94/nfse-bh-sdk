@@ -6,7 +6,6 @@ use NFse\Signature\Pkcs12;
 
 class Subscriber
 {
-
     private $settings;
     private $pcks12;
 
@@ -33,7 +32,6 @@ class Subscriber
         }
 
         return true;
-
     }
 
     //assina uma TAG em uma string XML
@@ -49,6 +47,5 @@ class Subscriber
         } else {
             throw new \Exception($this->pcks12->getError());
         }
-
     }
 }

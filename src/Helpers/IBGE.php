@@ -4,7 +4,6 @@ use NFse\Sanitizers\Num;
 
 class IBGE
 {
-
     private $cURL;
     private $num;
     private $error;

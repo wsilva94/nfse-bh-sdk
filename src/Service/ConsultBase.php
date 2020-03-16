@@ -61,7 +61,6 @@ class ConsultBase
 
                 break;
         }
-
     }
 
     /**
@@ -79,5 +78,4 @@ class ConsultBase
     {
         return $this->errors;
     }
-
 }

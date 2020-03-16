@@ -2,7 +2,6 @@
 
 class ErrorLote
 {
-
     private $wsResponse;
     private $messages = '';
     private $error;

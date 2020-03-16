@@ -10,14 +10,14 @@ use NFse\Signature\Subscriber;
 
 class Rps
 {
-
     private $xml;
     private $rps;
     private $infRps;
     private $servico;
     private $prestador;
     private $tomador;
-    private $num, $text;
+    private $num;
+    private $text;
     private $settings;
     private $subscriber;
 
@@ -56,7 +56,6 @@ class Rps
             //inicia os validators
             $this->num = new Num();
             $this->text = new Text();
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -101,7 +100,6 @@ class Rps
             $this->infRps->appendChild($tagSimplesNac);
             $this->infRps->appendChild($tagIncentivCult);
             $this->infRps->appendChild($tagStatus);
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -152,7 +150,6 @@ class Rps
             if (empty($lot->rps->status) || !in_array($lot->rps->status, [1, 2])) {
                 throw new \Exception("Não foi definido o status do RPS.");
             }
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -208,7 +205,6 @@ class Rps
         } catch (Exception $e) {
             throw $e;
         }
-
     }
 
     /**
@@ -347,7 +343,6 @@ class Rps
             $tagEndereco->appendChild($tagCep);
 
             $this->tomador->appendChild($tagEndereco);
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -390,7 +385,6 @@ class Rps
                 throw new \Exception("A inscrição municipal do tomador de serviços está em branco ou excede o limite de 15 caractéres.");
             }
         }
-
     }
 
     /**
@@ -426,5 +420,4 @@ class Rps
             throw $e;
         }
     }
-
 }

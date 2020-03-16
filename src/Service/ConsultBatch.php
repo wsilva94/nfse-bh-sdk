@@ -10,7 +10,6 @@ use NFse\Soap\Soap;
 
 class ConsultBatch extends ConsultBase
 {
-
     private $xSoap;
 
     /**
@@ -31,7 +30,6 @@ class ConsultBatch extends ConsultBase
         ];
 
         $this->syncModel = $this->callConsultation($settings, $parameters);
-
     }
 
     /**
@@ -65,7 +63,6 @@ class ConsultBatch extends ConsultBase
     //retorna a lista de erros de processamento do lote
     public function getProcessingErrors()
     {
-
         try { //envia a chamada para o SOAP
             $this->xSoap->setXML($this->syncModel->getXML());
             $wsResponse = $this->xSoap->__soapCall();
@@ -84,7 +81,6 @@ class ConsultBatch extends ConsultBase
                 return false;
             }
         } else {
-
             if (isset($xmlResponse->ListaNfse)) {
                 $this->errors = "O serviço da prefeitura não retornou nenhum erro de processamento neste lote.";
             } else {
@@ -94,5 +90,4 @@ class ConsultBatch extends ConsultBase
             return false;
         }
     }
-
 }

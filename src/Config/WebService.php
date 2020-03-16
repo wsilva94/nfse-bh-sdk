@@ -5,7 +5,6 @@ use NFse\Models\Settings;
 
 class WebService
 {
-
     public $env;
     public $wsdl = null;
     public $folder = null;
@@ -56,5 +55,4 @@ class WebService
         $this->wsdl = 'https://bhissdigital.pbh.gov.br/bhiss-ws/nfse?wsdl';
         $this->folder = 'producao';
     }
-
 }

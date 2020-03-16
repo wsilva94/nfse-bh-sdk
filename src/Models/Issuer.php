@@ -21,5 +21,4 @@ class Issuer
      *@var int codigo do municipio
      */
     public $codMun;
-
 }

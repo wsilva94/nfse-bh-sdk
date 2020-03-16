@@ -38,5 +38,4 @@ class Provader
     {
         return $this->address = new Address();
     }
-
 }

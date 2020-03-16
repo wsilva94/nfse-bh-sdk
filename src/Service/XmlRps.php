@@ -7,11 +7,12 @@ use NFse\Sanitizers\Text;
 
 class XmlRps
 {
-
     private $countRps = 0;
     private $signedRps = '';
     private $settings;
-    private $xml, $num, $text;
+    private $xml;
+    private $num;
+    private $text;
 
     /**
      * construtor inicializando os dados do lote
@@ -58,5 +59,4 @@ class XmlRps
 
         return $xml;
     }
-
 }

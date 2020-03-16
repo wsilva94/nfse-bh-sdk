@@ -2,7 +2,6 @@
 
 class CancelamentoNFs
 {
-
     private $wsResponse;
     private $error;
     private $dataCancelamento;
@@ -26,7 +25,6 @@ class CancelamentoNFs
     //retorna os dados de confirmação do cancelamento
     public function getDataCancelamento()
     {
-
         if (is_object($this->wsResponse) && isset($this->wsResponse->outputXML)) {
 
             //carrega o xml da consulta
@@ -50,7 +48,6 @@ class CancelamentoNFs
 
             //retorna o array montado
             return $this->dataCancelamento;
-
         } else {
             $this->error = "Não foi possivel processar a resposta do servidor da prefeitura.";
             return false;
@@ -72,6 +69,5 @@ class CancelamentoNFs
             'codMunicipio' => $confirmacao->Pedido->InfPedidoCancelamento->IdentificacaoNfse->CodigoMunicipio->__toString(),
             'dataHora' => $confirmacao->DataHora->__toString(),
         ];
-
     }
 }

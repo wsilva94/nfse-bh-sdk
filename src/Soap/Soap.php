@@ -8,7 +8,6 @@ use SoapFault;
 
 class Soap extends SoapClient
 {
-
     private $xml;
     private $method;
     private $webservice;
@@ -24,7 +23,6 @@ class Soap extends SoapClient
     public function __construct(Settings $settings, string $method, array $options = null)
     {
         try {
-
             $this->webservice = new WebService($settings);
             $this->method = $method;
             $this->settings = $settings;
@@ -58,7 +56,6 @@ class Soap extends SoapClient
             }
 
             return $parent;
-
         } catch (Exception $e) {
             throw $e;
         }
@@ -93,7 +90,6 @@ class Soap extends SoapClient
     //monta o cabeçalho e chama o request ao webservice
     public function __doRequest($request, $location, $action, $version, $one_way = 0)
     {
-
         $this->clearXml();
 
         //monta a mensagem ao webservice

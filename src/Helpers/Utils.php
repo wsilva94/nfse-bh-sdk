@@ -4,7 +4,6 @@ use NFse\Config\WebService;
 
 class Utils
 {
-
     public static function isDate($str_dt, $str_dateformat, $str_timezone)
     {
         $date = \DateTime::createFromFormat($str_dateformat, $str_dt, new \DateTimeZone($str_timezone));
@@ -40,22 +39,22 @@ class Utils
         error_reporting(E_ERROR | E_WARNING | E_PARSE);
     }
 
-/*     //helper para amazenas os xml's na pasta storage
-    public static function saveAt($filename, $fileContents)
-    {
-        $webservice = new WebService();
-        $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
-        return file_put_contents($filePath, $fileContents);
-    }
-
-    //retorna um xml da pasta storage
-    public function getFile($filename)
-    {
-        $webservice = new WebService();
-        $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
-        return file_get_contents($filePath);
-    }
- */
+    /*     //helper para amazenas os xml's na pasta storage
+        public static function saveAt($filename, $fileContents)
+        {
+            $webservice = new WebService();
+            $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
+            return file_put_contents($filePath, $fileContents);
+        }
+    
+        //retorna um xml da pasta storage
+        public function getFile($filename)
+        {
+            $webservice = new WebService();
+            $filePath = NFE_PATH . 'storage' . DIRECTORY_SEPARATOR . $webservice->env . DIRECTORY_SEPARATOR . $filename;
+            return file_get_contents($filePath);
+        }
+     */
     /**
      * Função que formata valor em moeda brasileira
      *
@@ -124,5 +123,4 @@ class Utils
 
         return $maskared;
     }
-
 }

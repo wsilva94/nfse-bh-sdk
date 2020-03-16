@@ -2,7 +2,6 @@
 
 class ConsultaLoteRps
 {
-
     public $wsResponse;
     public $error;
     public $dataLote;
@@ -33,7 +32,7 @@ class ConsultaLoteRps
             $this->dataLote['xml'] = $this->wsResponse->outputXML;
             $this->wsResponse = simplexml_load_string($this->wsResponse->outputXML);
 
-            if(isset( $this->wsResponse->ListaMensagemRetorno->MensagemRetorno)){
+            if (isset($this->wsResponse->ListaMensagemRetorno->MensagemRetorno)) {
                 return ($this->wsResponse->ListaMensagemRetorno->MensagemRetorno);
             }
 
@@ -50,7 +49,6 @@ class ConsultaLoteRps
 
             //retorna o array montado
             return $this->dataLote;
-
         } else {
             $this->error = "Não foi possivel processar a resposta do servidor da prefeitura.";
             return false;
@@ -246,5 +244,4 @@ class ConsultaLoteRps
             return false;
         }
     }
-
 }

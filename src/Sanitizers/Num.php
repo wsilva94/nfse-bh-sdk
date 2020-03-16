@@ -4,7 +4,6 @@ namespace NFse\Sanitizers;
 
 class Num
 {
-
     private $num;
 
     /**

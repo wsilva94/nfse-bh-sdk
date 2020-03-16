@@ -76,5 +76,4 @@ class Rps
         $this->service = new Service();
         $this->taker = new Taker();
     }
-
 }

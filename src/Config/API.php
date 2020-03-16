@@ -51,10 +51,8 @@ class API
             if (!is_dir(__DIR__ . "/../../storage/{$this->webservice->env}")) {
                 die("Não foi possivel criar o diretorio $filesystem. Verifique as permissões");
             }
-
         } catch (Exception $e) {
             throw $e;
         }
-
     }
 }
