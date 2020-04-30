@@ -1,4 +1,6 @@
-<?php namespace NFse\Service;
+<?php
+
+namespace NFse\Service;
 
 use Exception;
 use Mpdf\Mpdf;
@@ -12,7 +14,7 @@ class PrintPDFNFse
     private $logo64;
 
     /**
-     *recebe o objeto da nota fiscal para impressão
+     *recebe o objeto da nota fiscal para impressão.
      *
      * @param NFse\Models\NFse;
      */
@@ -275,70 +277,70 @@ class PrintPDFNFse
 
         $this->html = str_replace(
             [
-            //css
-            '/* {PRINT_CSS}*/',
-            //header
-            '{ANO}',
-            '{NFSE_NUMERO}',
-            '{DATA_EMISSAO}',
-            '{HORA_EMISSAO}',
-            '{COMPETENCIA}',
-            '{CODIGO_VERIFICACAO}',
-            '{LOGO_BASE_64}',
-            '{NFE_SUBSTITUIDA}',
-            //presatador
-            '{RAZAO_SOCIAL_PRESTADOR}',
-            '{CPF_CNPJ_PRESTADOR}',
-            '{INSCRICAO_MUNICIPAL_PRESTADOR}',
-            '{LOGRADOURO_PRESTADOR}',
-            '{NUMERO_ENDERECO_PRESTADOR}',
-            '{BAIRRO_PRESTADOR}',
-            '{CEP_PRESTADOR}',
-            '{MUNICIPIO_PRESTADOR}',
-            '{ESTADO_PRESTADOR}',
-            '{TELEFONE_PRESTADOR}',
-            '{EMAIL_PRESTADOR}',
-            //Tomador
-            '{RAZAO_SOCIAL_TOMADOR}',
-            '{CPF_CNPJ_TOMADOR}',
-            '{INSCRICAO_MUNICIPAL_TOMADOR}',
-            '{LOGRADOURO_TOMADOR}',
-            '{NUMERO_ENDERECO_TOMADOR}',
-            '{BAIRRO_TOMADOR}',
-            '{CEP_TOMADOR}',
-            '{MUNICIPIO_TOMADOR}',
-            '{ESTADO_TOMADOR}',
-            '{TELEFONE_TOMADOR}',
-            '{EMAIL_TOMADOR}',
-            //body
-            '{DESCRIMINACAO}',
-            '{CODIGO_TRIBUTACAO_MUNICIPAL}',
-            '{DESCRICAO_TRIBUTACAO_MUNICIPAL}',
-            '{ITEM_LISTA_SERVICO}',
-            '{DESCRICAO_LISTA_SERVICO}',
-            '{CODIGO_MUNICIPIO_GERADOR}',
-            '{NOME_MUNICIPIO_GERADOR}',
-            '{NATUREZA_OPERACAO}',
-            '{REGIME_ESPECIAL_TRIBUTACAO}',
-            //valores
-            '{VALOR_SERVICOS}',
-            '{VALOR_DESCONTO_CONDICIONADO}',
-            '{TOTAL_RETENCOES_FEDERAIS}',
-            '{VALOR_ISS_RETIDO}',
-            '{VALOR_LIQUIDO}',
-            '{DEDUCOES}',
-            '{VALOR_DESCONTO_INCONDICIONADO}',
-            '{BASE_CALCULO}',
-            '{ALIQUOTA_SERVICOS}',
-            '{VALOR_ISS}',
-            '{VALOR_PIS}',
-            '{VALOR_COFINS}',
-            '{VALOR_IR}',
-            '{VALOR_CSLL}',
-            '{VALOR_INSS}',
-            //footer
-            '{OPITANTE_PELO_SIMPLES}',
-        ],
+                //css
+                '/* {PRINT_CSS}*/',
+                //header
+                '{ANO}',
+                '{NFSE_NUMERO}',
+                '{DATA_EMISSAO}',
+                '{HORA_EMISSAO}',
+                '{COMPETENCIA}',
+                '{CODIGO_VERIFICACAO}',
+                '{LOGO_BASE_64}',
+                '{NFE_SUBSTITUIDA}',
+                //presatador
+                '{RAZAO_SOCIAL_PRESTADOR}',
+                '{CPF_CNPJ_PRESTADOR}',
+                '{INSCRICAO_MUNICIPAL_PRESTADOR}',
+                '{LOGRADOURO_PRESTADOR}',
+                '{NUMERO_ENDERECO_PRESTADOR}',
+                '{BAIRRO_PRESTADOR}',
+                '{CEP_PRESTADOR}',
+                '{MUNICIPIO_PRESTADOR}',
+                '{ESTADO_PRESTADOR}',
+                '{TELEFONE_PRESTADOR}',
+                '{EMAIL_PRESTADOR}',
+                //Tomador
+                '{RAZAO_SOCIAL_TOMADOR}',
+                '{CPF_CNPJ_TOMADOR}',
+                '{INSCRICAO_MUNICIPAL_TOMADOR}',
+                '{LOGRADOURO_TOMADOR}',
+                '{NUMERO_ENDERECO_TOMADOR}',
+                '{BAIRRO_TOMADOR}',
+                '{CEP_TOMADOR}',
+                '{MUNICIPIO_TOMADOR}',
+                '{ESTADO_TOMADOR}',
+                '{TELEFONE_TOMADOR}',
+                '{EMAIL_TOMADOR}',
+                //body
+                '{DESCRIMINACAO}',
+                '{CODIGO_TRIBUTACAO_MUNICIPAL}',
+                '{DESCRICAO_TRIBUTACAO_MUNICIPAL}',
+                '{ITEM_LISTA_SERVICO}',
+                '{DESCRICAO_LISTA_SERVICO}',
+                '{CODIGO_MUNICIPIO_GERADOR}',
+                '{NOME_MUNICIPIO_GERADOR}',
+                '{NATUREZA_OPERACAO}',
+                '{REGIME_ESPECIAL_TRIBUTACAO}',
+                //valores
+                '{VALOR_SERVICOS}',
+                '{VALOR_DESCONTO_CONDICIONADO}',
+                '{TOTAL_RETENCOES_FEDERAIS}',
+                '{VALOR_ISS_RETIDO}',
+                '{VALOR_LIQUIDO}',
+                '{DEDUCOES}',
+                '{VALOR_DESCONTO_INCONDICIONADO}',
+                '{BASE_CALCULO}',
+                '{ALIQUOTA_SERVICOS}',
+                '{VALOR_ISS}',
+                '{VALOR_PIS}',
+                '{VALOR_COFINS}',
+                '{VALOR_IR}',
+                '{VALOR_CSLL}',
+                '{VALOR_INSS}',
+                //footer
+                '{OPITANTE_PELO_SIMPLES}',
+            ],
             [
                 //css
                 $printCss,
@@ -369,7 +371,7 @@ class PrintPDFNFse
 
                 //tomador
                 $this->nfse->taker->name,
-                (strlen($this->nfse->taker->document) > 11)?Utils::mask((string) $this->nfse->taker->document, '##.###.###/####-##') :Utils::mask((string) $this->nfse->taker->document, '###.###.###-##'),
+                (\strlen($this->nfse->taker->document) > 11) ? Utils::mask((string) $this->nfse->taker->document, '##.###.###/####-##') : Utils::mask((string) $this->nfse->taker->document, '###.###.###-##'),
                 ($this->nfse->taker->municipalRegistration) ? Utils::mask((string) $this->nfse->taker->municipalRegistration, '#######/###-#') : 'Não Informado',
 
                 //tomador endereço
@@ -397,21 +399,21 @@ class PrintPDFNFse
                 $specialTaxRegime,
 
                 //valores
-                Utils::formatRealMoney(($this->nfse->service->serviceValue??0)),
-                Utils::formatRealMoney(($this->nfse->service->discountCondition??0)),
-                Utils::formatRealMoney(($this->nfse->service->otherWithholdings??0)),
-                Utils::formatRealMoney(($this->nfse->service->issValueWithheld??0)),
-                Utils::formatRealMoney(($this->nfse->service->netValue??0)),
-                Utils::formatRealMoney(($this->nfse->service->valueDeductions??0)),
-                Utils::formatRealMoney(($this->nfse->service->unconditionedDiscount??0)),
-                Utils::formatRealMoney(($this->nfse->service->calculationBase??0)),
+                Utils::formatRealMoney($this->nfse->service->serviceValue ?? 0),
+                Utils::formatRealMoney($this->nfse->service->discountCondition ?? 0),
+                Utils::formatRealMoney($this->nfse->service->otherWithholdings ?? 0),
+                Utils::formatRealMoney($this->nfse->service->issValueWithheld ?? 0),
+                Utils::formatRealMoney($this->nfse->service->netValue ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valueDeductions ?? 0),
+                Utils::formatRealMoney($this->nfse->service->unconditionedDiscount ?? 0),
+                Utils::formatRealMoney($this->nfse->service->calculationBase ?? 0),
                 $this->nfse->service->aliquot * 100 . ' % ',
-                Utils::formatRealMoney(($this->nfse->service->issValue)??0),
-                Utils::formatRealMoney(($this->nfse->service->valuePis)??0),
-                Utils::formatRealMoney(($this->nfse->service->valueConfis)??0),
-                Utils::formatRealMoney(($this->nfse->service->valueIR)??0),
-                Utils::formatRealMoney(($this->nfse->service->valueCSLL)??0),
-                Utils::formatRealMoney(($this->nfse->service->valueINSS)??0),
+                Utils::formatRealMoney($this->nfse->service->issValue ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valuePis ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valueConfis ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valueIR ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valueCSLL ?? 0),
+                Utils::formatRealMoney($this->nfse->service->valueINSS ?? 0),
                 $optanteSimplesNacional,
             ],
             $this->html

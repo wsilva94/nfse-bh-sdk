@@ -1,4 +1,6 @@
-<?php namespace NFse\Helpers;
+<?php
+
+namespace NFse\Helpers;
 
 use NFse\Config\WebService;
 
@@ -7,7 +9,8 @@ class Utils
     public static function isDate($str_dt, $str_dateformat, $str_timezone)
     {
         $date = \DateTime::createFromFormat($str_dateformat, $str_dt, new \DateTimeZone($str_timezone));
-        return $date && \DateTime::getLastErrors()["warning_count"] == 0 && \DateTime::getLastErrors()["error_count"] == 0;
+
+        return $date && \DateTime::getLastErrors()['warning_count'] == 0 && \DateTime::getLastErrors()['error_count'] == 0;
     }
 
     public static function isValor($valor)
@@ -18,13 +21,14 @@ class Utils
     //limpa um xml
     public static function xmlFilter($xml)
     {
-        $remove = ['xmlns:default="http://www.w3.org/2000/09/xmldsig#"', ' standalone="no"', 'default:', ':default', "\n", "\r", "\t", "  "];
+        $remove = ['xmlns:default="http://www.w3.org/2000/09/xmldsig#"', ' standalone="no"', 'default:', ':default', "\n", "\r", "\t", '  '];
         $encode = ['<?xml version="1.0"?>', '<?xml version="1.0" encoding="utf-8"?>', '<?xml version="1.0" encoding="UTF-8"?>', '<?xml version="1.0" encoding="utf-8" standalone="no"?>', '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'];
+
         return str_replace(array_merge($remove, $encode), '', $xml);
     }
 
     /**
-     * ativa o modo debug
+     * ativa o modo debug.
      */
     public static function xdebugMode()
     {
@@ -55,23 +59,24 @@ class Utils
             return file_get_contents($filePath);
         }
      */
+
     /**
-     * Função que formata valor em moeda brasileira
+     * Função que formata valor em moeda brasileira.
      *
      * @param int $valor
      */
-    public static function formatRealMoney(int $valor)
+    public static function formatRealMoney(float $valor)
     {
         return 'R$ ' . number_format($valor, 2, ',', '.');
     }
 
     /**
-     * Função que monta uma máscara de acordo com os parâmetro informados
+     * Função que monta uma máscara de acordo com os parâmetro informados.
      *
-     * @param String $val valor a ser fromatado
-     * @param String $mask formato da máscara
+     * @param string $val  valor a ser fromatado
+     * @param string $mask formato da máscara
      */
-    public static function mask(String $val, String $mask)
+    public static function mask(string $val, string $mask)
     {
         $maskared = '';
         $k = 0;
