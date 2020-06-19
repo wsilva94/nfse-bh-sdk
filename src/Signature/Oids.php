@@ -1,4 +1,4 @@
-<?php namespace NFse\Signature;
+<?php namespace Nfse\Signature;
 
 class Oids
 {

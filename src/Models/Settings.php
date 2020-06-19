@@ -1,6 +1,9 @@
 <?php
 
-namespace NFse\Models;
+namespace Nfse\Models;
+
+use Nfse\Models\Issuer;
+use Nfse\Models\Certificate;
 
 class Settings extends DefaultModel
 {
@@ -10,16 +13,21 @@ class Settings extends DefaultModel
     public $environment;
 
     /**
+     *@var string pasta onde guarda os XML
+     */
+    public $storage;
+
+    /**
      * Issuer.
      *
-     * @var NFse\Models\Issuer
+     * @var Nfse\Models\Issuer
      */
     public $issuer;
 
     /**
      * Certificate.
      *
-     * @var NFse\Models\Certificate
+     * @var Nfse\Models\Certificate
      */
     public $certificate;
 

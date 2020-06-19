@@ -1,18 +1,17 @@
-<?php namespace NFse\Signature;
+<?php namespace Nfse\Signature;
 
 use Exception;
-use NFse\Models\Settings;
-use NFse\Signature\Pkcs12;
+use Nfse\Models\Settings;
+use Nfse\Signature\Pkcs12;
 
 class Subscriber
 {
+
     private $settings;
     private $pcks12;
 
     /**
-     * carrrega o certificado
-     *
-     * @param NFse\Models\Settings;
+     * @param Nfse\Models\Settings;
      */
     public function __construct($settings)
     {
@@ -20,13 +19,13 @@ class Subscriber
         $this->pcks12 = new Pkcs12($this->settings);
     }
 
-    //checka se o load do certificado ocorreu corretamente
+    /**
+     * checka se o load do certificado ocorreu corretamente;
+     */
     public function loadPFX(): bool
     {
-        //inicializa a classe Pcks12
         $state = $this->pcks12->loadPFX();
 
-        //checka o status e retorna uma exception conforme
         if (!$state) {
             throw new Exception($this->pcks12->getError());
         }
@@ -47,5 +46,6 @@ class Subscriber
         } else {
             throw new \Exception($this->pcks12->getError());
         }
+
     }
 }

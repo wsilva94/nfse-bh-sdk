@@ -1,4 +1,4 @@
-<?php namespace NFse\Signature;
+<?php namespace Nfse\Signature;
 
 // Classe auxiliar para obter informações dos certificados digitais A1 (PKCS12) [Base para a classe ASN]
 

@@ -1,16 +1,16 @@
-<?php namespace NFse\Models;
+<?php namespace Nfse\Models;
 
 class Certificate
 {
     /**
      *@var string diretorio onde se encontra os certificados
      */
-    public $folder;
+    public $certificateDirName;
 
     /**
      *@var string nome do arquivo certificado .PFX
      */
-    public $certFile;
+    public $certificateFileName;
 
     /**
      *@var string nome da chave mesclada .PEM

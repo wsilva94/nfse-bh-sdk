@@ -1,47 +1,32 @@
-<?php
+<?php namespace Nfse\Sanitizers;
 
-namespace NFse\Sanitizers;
+use Carbon\Carbon;
 
 class Date
 {
     private $date;
 
-    /**
-     * Inicializa a variavel
-     */
-    public function with($date)
+    public function init($date)
     {
         $this->date = $date;
         return $this;
     }
 
-    /**
-     *  Formata em ano/mês/dia
-     */
     public function formatYmd($date)
     {
-        return $this->date = date('Y-m-d', strtotime($date));
+        return $this->date = Carbon::parse($date)->format('Y-m-d');
     }
 
-    /**
-     *  Formata em ano/mês/dia/hora/min/seg
-     */
     public function formatYmdTHis($date)
     {
-        return $this->date = str_replace(' ', 'T', date('Y-m-d H:i:s', strtotime($date)));
+        return $this->date = Carbon::parse($date)->format('Y-m-d H:i:s');
     }
 
-    /**
-     *  Formata uma competência mês/ano
-     */
     public function formatYm($date)
     {
-        return $this->date = date('Y-m', strtotime($date));
+        return $this->date = Carbon::parse($date)->format('Y-m');
     }
 
-    /**
-     *  Retorna o valor processado
-     */
     public function get()
     {
         return $this->date;

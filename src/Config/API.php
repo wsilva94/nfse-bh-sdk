@@ -1,31 +1,30 @@
-<?php namespace NFse\Config;
+<?php namespace Nfse\Config;
 
 use Exception;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
-use NFse\Config\WebService;
-use NFse\Models\Settings;
+use Nfse\Config\WebService;
+use Nfse\Models\Settings;
+use Symfony\Component\Filesystem\Filesystem;
 
 class API
 {
     private $webservice;
     private $settings;
+    private $filesystem;
 
     /**
-     * construtor
-     *
-     * @param NFse\Models\Settings;
+     * @param Nfse\Models\Settings;
      */
     public function __construct(Settings $settings)
     {
         $this->settings = $settings;
         $this->webservice = new WebService($this->settings);
+        $this->filesystem = new Filesystem();
     }
 
     /**
      * retorna um subdiretório de storage
      */
-    public function getFolder($folder, $subfolder = false):string
+    public function getFolder($folder, $subfolder = false): string
     {
         try {
             if ($subfolder) {
@@ -39,17 +38,23 @@ class API
     }
 
     /**
-     * monta a arvore de diretórios em storage e estabelece permissões de acesso
+     * @return bool;
      */
-    public function checkFolders(): void
+    public function checkFolders(string $directory)
     {
         try {
-            $adapter = new Local(__DIR__ . "/../../storage/{$this->webservice->env}");
-            $filesystem = new Filesystem($adapter);
+            return $this->filesystem->exists($directory);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
-            //cria a pasta de ambiente
-            if (!is_dir(__DIR__ . "/../../storage/{$this->webservice->env}")) {
-                die("Não foi possivel criar o diretorio $filesystem. Verifique as permissões");
+    public function makeDirStorage(string $directory)
+    {
+        try {
+            $this->filesystem->mkdir($directory, 0770);
+            if (!$this->checkFolders($directory)) {
+                throw new Exception("Não foi possivel criar o pasta no seguinte diretório " . $directory . ".Verifique as permissões", 400);
             }
         } catch (Exception $e) {
             throw $e;

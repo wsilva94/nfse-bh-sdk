@@ -1,10 +1,8 @@
-<?php
-
-namespace NFse\Signature;
+<?php namespace Nfse\Signature;
 
 // Classe para tratamento e uso dos certificados digitais modelo A1 (PKCS12)
 
-use NFse\Models\Settings;
+use Nfse\Models\Settings;
 
 class Pkcs12
 {
@@ -41,7 +39,7 @@ class Pkcs12
     /**
      * Método de construção da classe.
      *
-     * @param NFse\Models\Settings;
+     * @param Nfse\Models\Settings;
      */
     public function __construct(Settings $settings)
     {

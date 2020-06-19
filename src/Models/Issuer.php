@@ -1,4 +1,4 @@
-<?php namespace NFse\Models;
+<?php namespace Nfse\Models;
 
 class Issuer
 {
@@ -21,4 +21,5 @@ class Issuer
      *@var int codigo do municipio
      */
     public $codMun;
+
 }

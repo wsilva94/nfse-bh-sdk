@@ -1,8 +1,8 @@
-<?php namespace NFse\Signature;
+<?php namespace Nfse\Signature;
 
 //Classe auxiliar para obter informações dos certificados digitais A1 (PKCS12)
 
-use NFse\Signature\Oids;
+use Nfse\Signature\Oids;
 
 class Asn extends Base
 {

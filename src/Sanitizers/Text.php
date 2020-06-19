@@ -1,23 +1,16 @@
-<?php
-
-namespace NFse\Sanitizers;
+<?php namespace NFse\Sanitizers;
 
 class Text
 {
+
     private $str;
 
-    /**
-     *  Inicializa a variavel
-     */
-    public function with($str)
+    public function init($str)
     {
         $this->str = $str;
         return $this;
     }
 
-    /**
-     *  Filtra deixando somente números
-     */
     public function sanitize()
     {
         $find = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]/?;:.,\\\'<>°ºª';
@@ -39,18 +32,12 @@ class Text
         return $this;
     }
 
-    /**
-     *  Seta um length para o attr
-     */
     public function maxL($max)
     {
         $this->str = substr($this->str, 0, $max);
         return $this;
     }
 
-    /**
-     *  Retorna o valor processado
-     */
     public function get()
     {
         return $this->str;

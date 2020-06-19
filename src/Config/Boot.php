@@ -1,44 +1,53 @@
-<?php namespace NFse\Config;
+<?php namespace Nfse\Config;
 
 use Exception;
-use NFse\Config\API;
-use NFse\Config\Certificate;
-use NFse\Models\Settings;
-use NFse\Signature\Subscriber;
+use Nfse\Config\API;
+use Nfse\Config\Certificate;
+use Nfse\Models\Settings;
+use Nfse\Signature\Subscriber;
 
 class Boot
 {
     private $api;
-    private $cert;
+    private $certificate;
     private $subscriber;
     private $settings;
 
     /**
-     * construtor que verifica os parâmetros básicos para funcionamento da lib
-     *
-     * @param NFse\Models\Settings;
+     * @param Nfse\Models\Settings;
      */
     public function __construct(Settings $settings)
     {
         try {
             $this->settings = $settings;
-
             $this->api = new API($this->settings);
-            $this->cert = new Certificate($this->settings);
+            $this->certificate = new Certificate($this->settings);
             $this->subscriber = new Subscriber($this->settings);
+
         } catch (Exception $e) {
             throw $e;
         }
     }
 
     /**
-     * Função que inicia o sistema
+     * @return bool
      */
-    public function init(): bool
+    public function init()
     {
         try {
-            $this->api->checkFolders();
-            $this->cert->load($this->settings);
+            $directories = array(
+                $this->settings->storage . "/{$this->settings->environment}",
+                __DIR__ . "/../../Storage/{$this->settings->environment}",
+            );
+
+            foreach ($directories as $directory) {
+                $issetFolders = $this->api->checkFolders($directory);
+                if(!$issetFolders){
+                    $this->api->makeDirStorage($directory);
+                }
+            }
+
+            $this->certificate->load($this->settings);
             $this->subscriber->loadPFX($this->settings);
 
             return true;
@@ -46,4 +55,5 @@ class Boot
             throw $e;
         }
     }
+
 }

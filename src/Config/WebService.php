@@ -1,4 +1,4 @@
-<?php namespace NFse\Config;
+<?php namespace Nfse\Config;
 
 use Exception;
 use NFse\Models\Settings;
@@ -20,8 +20,6 @@ class WebService
     public $sslVerifyPeerName = false;
 
     /**
-     * construtor
-     *
      * @param NFse\Models\Settings;
      */
     public function __construct(Settings $settings)
@@ -38,21 +36,16 @@ class WebService
         }
     }
 
-    /**
-     * configuração para o ambiente de homologacao
-     */
-    private function homologacao(): void
+    private function homologacao()
     {
         $this->wsdl = 'https://bhisshomologa.pbh.gov.br/bhiss-ws/nfse?wsdl';
         $this->folder = 'homologacao';
     }
 
-    /**
-     * configuração para o ambiente de produção
-     */
-    private function producao(): void
+    private function producao()
     {
         $this->wsdl = 'https://bhissdigital.pbh.gov.br/bhiss-ws/nfse?wsdl';
         $this->folder = 'producao';
     }
+
 }

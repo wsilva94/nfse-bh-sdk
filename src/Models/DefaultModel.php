@@ -1,4 +1,4 @@
-<?php namespace NFse\Models;
+<?php namespace Nfse\Models;
 
 use Exception;
 
