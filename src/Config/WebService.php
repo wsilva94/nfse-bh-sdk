@@ -1,7 +1,7 @@
 <?php namespace Nfse\Config;
 
 use Exception;
-use NFse\Models\Settings;
+use Nfse\Models\Settings;
 
 class WebService
 {

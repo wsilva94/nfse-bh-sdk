@@ -1,4 +1,4 @@
-<?php namespace NFse\Sanitizers;
+<?php namespace Nfse\Sanitizers;
 
 class Text
 {
