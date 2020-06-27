@@ -1,7 +1,7 @@
 <?php namespace Nfse\Signature;
 
 use Exception;
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 use Nfse\Signature\Pkcs12;
 
 class Subscriber
@@ -11,9 +11,9 @@ class Subscriber
     private $pcks12;
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
-    public function __construct($settings)
+    public function __construct(Settings $settings)
     {
         $this->settings = $settings;
         $this->pcks12 = new Pkcs12($this->settings);

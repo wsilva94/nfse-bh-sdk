@@ -2,7 +2,7 @@
 
 use Exception;
 use Nfse\Config\WebService;
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 use Symfony\Component\Filesystem\Filesystem;
 
 class API
@@ -12,7 +12,7 @@ class API
     private $filesystem;
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
     public function __construct(Settings $settings)
     {

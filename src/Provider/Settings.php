@@ -1,9 +1,9 @@
-<?php namespace Service;
+<?php namespace Nfse\Provider;
 
 use Nfse\Config\Boot;
 use Nfse\Helpers\Utils;
 use Nfse\Models\Settings as mdlSettings;
-use Service\ISettings;
+use Nfse\Provider\ISettings;
 
 class Settings implements ISettings
 {
@@ -12,13 +12,12 @@ class Settings implements ISettings
     public function __construct()
     {
         $this->settings = new mdlSettings();
-    }
+    }   
 
-    public function startSettings()
+    public function startSettings(Settings $thisClassInstance)
     {
-        $system = new Boot($this->settings);
+        $system = new Boot($thisClassInstance);
         $system->init();
-
     }
 
     /**
@@ -59,7 +58,7 @@ class Settings implements ISettings
      */
     public function setIssuerCnpj(string $cnpj)
     {
-        $this->settings->issuer->cnpj = $cnpj;
+        $this->settings->issuer->cnpj = Utils::removerMaskCpfCnpj($cnpj);
     }
 
     /**
@@ -81,17 +80,17 @@ class Settings implements ISettings
     /**
      * @param string $dir
      */
-    public function setCertificateFolder(string $dir)
+    public function setcertificateDirName(string $certificateDirName)
     {
-        $this->settings->certificate->folder = $dir;
+        $this->settings->certificate->certificateDirName = $certificateDirName;
     }
 
     /**
      * @param string $certFile
      */
-    public function setCertificateCertFile(string $certFile)
+    public function setNameCertificateFile(string $certificateFileName)
     {
-        $this->settings->certificate->certFile = $certFile;
+        $this->settings->certificate->certificateFileName = $certificateFileName;
     }
 
     /**
@@ -134,4 +133,68 @@ class Settings implements ISettings
         $this->settings->certificate->noValidate = $noValidate;
     }
 
+    public function getEnvironment()
+    {
+        return $this->settings->environment;
+    }
+
+    public function getStorage()
+    {
+        return $this->settings->storage;
+    }
+
+    public function getIssuerName()
+    {
+        return $this->settings->issuer->name;
+    }
+
+    public function getIssuerCnpj()
+    {
+        return $this->settings->issuer->cnpj;
+    }
+
+    public function getIssuerImun()
+    {
+        return $this->settings->issuer->imun;
+    }
+
+    public function getIssuerCodMun()
+    {
+        return $this->settings->issuer->codMun;
+    }
+
+    public function getCertificateDirName()
+    {
+        return $this->settings->certificate->certificateDirName;
+    }
+
+    public function getNameCertificateFile()
+    {
+        return $this->settings->certificate->certificateFileName;
+    }
+
+    public function getCertificateMixedKey()
+    {
+        return $this->settings->certificate->mixedKey;
+    }
+
+    public function getCertificatePrivateKey()
+    {
+        return $this->settings->certificate->privateKey;
+    }
+
+    public function getCertificatPublicKey()
+    {
+        return $this->settings->certificate->publicKey;
+    }
+
+    public function getCertificatPassword()
+    {
+        return $this->settings->certificate->password;
+    }
+
+    public function getCertificatNoValidate()
+    {
+        return $this->settings->certificate->noValidate;
+    }
 }

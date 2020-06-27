@@ -1,7 +1,7 @@
 <?php namespace Nfse\Config;
 
 use Exception;
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 
 class WebService
 {
@@ -20,12 +20,12 @@ class WebService
     public $sslVerifyPeerName = false;
 
     /**
-     * @param NFse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
     public function __construct(Settings $settings)
     {
         try {
-            $this->env = $settings->environment;
+            $this->env = $settings->getEnvironment();
             if ($this->env == 'homologacao') {
                 $this->homologacao();
             } else {

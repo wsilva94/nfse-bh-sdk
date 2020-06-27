@@ -2,7 +2,7 @@
 
 // Classe para tratamento e uso dos certificados digitais modelo A1 (PKCS12)
 
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 
 class Pkcs12
 {
@@ -33,26 +33,23 @@ class Pkcs12
     private $error = '';
 
     //objetos de configuração
-    private $certificate;
-    private $issuer;
+    private $settings;
 
     /**
      * Método de construção da classe.
      *
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
     public function __construct(Settings $settings)
     {
         //inicializa as classes de configuração
-        $this->certificate = $settings->certificate;
-        $this->issuer = $settings->issuer;
-
+        $this->settings = $settings;
         //recupera o nome dos arquivos de chave pública e privada
-        $this->pbCertFileName = $this->certificate->publicKey;
-        $this->pvCertFileName = $this->certificate->privateKey;
-        $this->mxCertFileName = $this->certificate->mixedKey;
-        $this->folderCerts = $this->certificate->folder;
-        $this->pfxCertFileName = $this->certificate->certFile;
+        $this->pbCertFileName = $this->settings->getCertificatPublicKey();
+        $this->pvCertFileName = $this->settings->getCertificatePrivateKey();
+        $this->mxCertFileName = $this->settings->getCertificateMixedKey();
+        $this->folderCerts = $this->settings->getCertificateDirName();
+        $this->pfxCertFileName = $this->settings->getNameCertificateFile();
     }
 
     //retorna o error
@@ -87,7 +84,7 @@ class Pkcs12
         if (!is_file($fullPathPublic) || !is_file($fullPathPrivate) || !is_file($fullPathMixed)) {
             //carrega os certificados e chaves para um array denominado $x509certdata
             $x509certdata = [];
-            if (!openssl_pkcs12_read($this->pfxCertContents, $x509certdata, $this->certificate->password)) {
+            if (!openssl_pkcs12_read($this->pfxCertContents, $x509certdata, $this->settings->getCertificatPassword())) {
                 $this->error = 'O certificado pfx não pode ser lido. Senha errada ou arquivo corrompido ou formato inválido.';
 
                 return false;
@@ -95,7 +92,7 @@ class Pkcs12
 
             //checka o CNPJ do certificado
             $cnpjCert = Asn::getCNPJCert($x509certdata['cert']);
-            if (substr($this->issuer->cnpj, 0, 8) != substr($cnpjCert, 0, 8)) {
+            if (substr($this->settings->getIssuerCnpj(), 0, 8) != substr($cnpjCert, 0, 8)) {
                 $this->error = 'O Certificado fornecido pertence a outro CNPJ.';
 
                 return false;
@@ -125,7 +122,7 @@ class Pkcs12
         }
 
         //retorna a validação do vencimento ou um bypass
-        if (!$this->certificate->noValidate) {
+        if (!$this->settings->getCertificatNoValidate()) {
             return true;
         }
 
@@ -429,7 +426,7 @@ class Pkcs12
         // Obter e remontar a chave publica do xml
         $x509Certificate = $dom->getNodeValue('X509Certificate');
         $x509Certificate = "-----BEGIN CERTIFICATE-----\n" .
-            $this->zSplitLines($x509Certificate) .
+        $this->zSplitLines($x509Certificate) .
             "\n-----END CERTIFICATE-----\n";
 
         //carregar a chave publica remontada

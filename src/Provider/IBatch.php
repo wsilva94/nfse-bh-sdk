@@ -1,4 +1,4 @@
-<?php namespace Service;
+<?php namespace Nfse\Provider;
 
 interface IBatch
 {

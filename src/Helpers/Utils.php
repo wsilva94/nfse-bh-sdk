@@ -9,9 +9,6 @@ class Utils
         return $date && \DateTime::getLastErrors()["warning_count"] == 0 && \DateTime::getLastErrors()["error_count"] == 0;
     }
 
-    /**
-     * limpa um xml
-     */
     public static function xmlFilter($xml)
     {
         $remove = ['xmlns:default="http://www.w3.org/2000/09/xmldsig#"', ' standalone="no"', 'default:', ':default', "\n", "\r", "\t", "  "];
@@ -19,9 +16,6 @@ class Utils
         return str_replace(array_merge($remove, $encode), '', $xml);
     }
 
-    /**
-     * ativa o modo debug
-     */
     public static function xdebugMode()
     {
         ini_set('display_errors', 1);
@@ -29,31 +23,52 @@ class Utils
         error_reporting(E_ALL);
     }
 
-    /**
-     * exibe somente exceptions, warnings e erros de parsing
-     */
     public static function liteDebugMode()
     {
         error_reporting(E_ERROR | E_WARNING | E_PARSE);
     }
 
     /**
-     * Função que formata valor em moeda brasileira
-     *
-     * @param int $valor
+     * @param float $valor
      */
-    public static function formatRealMoney(int $valor)
+    public static function formatRealMoney(float $valor)
     {
         return 'R$ ' . number_format($valor, 2, ',', '.');
     }
 
     /**
-     * Função que monta uma máscara de acordo com os parâmetro informados
-     *
-     * @param String $val valor a ser fromatado
-     * @param String $mask formato da máscara
+     * @param string $number
      */
-    public static function mask(String $val, String $mask)
+    public static function removerMaskTel(string $number)
+    {
+        return preg_replace('/\D/', '', trim($number));
+    }
+
+    /**
+     * @param string $document
+     */
+    public static function setMaskCpfCnpj(string $document)
+    {
+        if (\strlen($document) < 12) {
+            return self::mask($document, '###.###.###-##');
+        }
+
+        return self::mask($document, '##.###.###/####-##');
+    }
+
+     /**
+     * @param string $document
+     */
+    public static function removerMaskCpfCnpj(string $document)
+    {
+        return preg_replace('/[^0-9]/', '', trim($document));
+    }
+
+    /**
+     * @param string $val valor a ser fromatado
+     * @param string $mask formato da máscara
+     */
+    public static function mask(string $val, string $mask)
     {
         $maskared = '';
         $k = 0;
@@ -73,36 +88,32 @@ class Utils
     }
 
     /**
-     * Função que adiciona uma máscara de telefone em um numero.
-     *
-     * @param int $val número do telefone
+     * @param array $datas
      */
-    public static function addPhoneMask($val)
+    public static function clearArray(array $datas)
     {
-        $val = preg_replace('/\D/', '', $val);
-        if (empty($val)) {
-            return '';
-        }
-
-        $mask = '(##) ####-####';
-        if (\strlen($val) == 11) {
-            $mask = '(##) #####-####';
-        }
-
-        $maskared = '';
-        $k = 0;
-        for ($i = 0; $i <= \strlen($mask) - 1; ++$i) {
-            if ($mask[$i] == '#') {
-                if (isset($val[$k])) {
-                    $maskared .= $val[$k++];
-                }
-            } else {
-                if (isset($mask[$i])) {
-                    $maskared .= $mask[$i];
-                }
+        foreach ($datas as $key => $data) {
+            if (is_null($data)) {
+                unset($datas[$key]);
             }
         }
-        return $maskared;
+
+        return $datas;
     }
 
+    /**
+     * @param array $data
+     */
+    public static function convertObjectToArray($data)
+    {
+        if (is_array($data) || is_object($data)) {
+            $result = array();
+            foreach ($data as $key => $value) {
+                $result[$key] = self::convertObjectToArray($value);
+            }
+            return $result;
+        }
+
+        return $data;
+    }
 }

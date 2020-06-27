@@ -19,14 +19,12 @@ class Settings extends DefaultModel
 
     /**
      * Issuer.
-     *
      * @var Nfse\Models\Issuer
      */
     public $issuer;
 
     /**
      * Certificate.
-     *
      * @var Nfse\Models\Certificate
      */
     public $certificate;

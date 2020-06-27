@@ -1,10 +1,12 @@
 <?php namespace Nfse\Service;
 
+use Exception;
+use Illuminate\Support\Arr;
+use Nfse\Helpers\XML;
+use Nfse\Provider\Settings;
 use Nfse\Sanitizers\Num;
 use Nfse\Sanitizers\Text;
-use Nfse\Helpers\XML;
-use Exception;
-use Service\Settings;
+
 class Base
 {
     protected $num;
@@ -28,25 +30,25 @@ class Base
     }
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      * @param object
      */
-    protected function LoadConsultXML(Settings $settings, object $parameters)
+    protected function loadConsultXML(Settings $settings, array $parameters)
     {
-        switch ($parameters->file) {
+        switch (Arr::get($parameters, 'file')) {
             case 'consultaSituacaoLoteRps':
-            case 'consultaLoteRps':
+            case 'consultRPSBatch':
 
-                $this->xml = XML::load($parameters->file)
+                $this->xml = XML::load(Arr::get($parameters, 'file'))
                     ->set('cnpjPrestador', $settings->issuer->cnpj)
                     ->set('imPrestador', $settings->issuer->imun)
-                    ->set('protocoloLote', $this->text->init($parameters->numProtocol)->sanitize()->get())
+                    ->set('protocoloLote', $this->text->init(Arr::get($parameters, 'numProtocol'))->sanitize()->get())
                     ->filter()->save();
                 break;
 
             case 'consultaNFs':
 
-                $this->xml = XML::load($parameters->file)
+                $this->xml = XML::load(Arr::get($parameters, 'file'))
                     ->set('cnpj', $settings->issuer->cnpj)
                     ->set('inscricaoMunicipal', $settings->issuer->imun)
                     ->save();
@@ -54,13 +56,13 @@ class Base
 
             case 'cancelamentoNFs':
 
-                $this->xml = XML::load($parameters->file)
-                    ->set('Id', $parameters->id)
-                    ->set('numeroNFSe', $this->num->init($parameters->numerNFse)->sanitize()->get())
+                $this->xml = XML::load(Arr::get($parameters, 'file'))
+                    ->set('Id', Arr::get($parameters, 'id'))
+                    ->set('numeroNFSe', $this->num->init(Arr::get($parameters, 'numerNFse'))->sanitize()->get())
                     ->set('cnpjPrestador', $settings->issuer->cnpj)
                     ->set('imPrestador', $settings->issuer->imun)
                     ->set('codigoMunicipioPrestaor', $settings->issuer->codMun)
-                    ->set('codigoCancelamento', $parameters->cancellationCode)
+                    ->set('codigoCancelamento', Arr::get($parameters, 'cancellationCode'))
                     ->filter()
                     ->save();
                 break;

@@ -3,7 +3,7 @@
 namespace Nfse\Config;
 
 use Exception;
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Certificate
@@ -16,25 +16,25 @@ class Certificate
     }
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
     public function load(Settings $settings)
     {
-        if (empty($settings->certificate->password)) {
+        if (empty($settings->getCertificatPassword())) {
             throw new Exception('A senha de acesso para o certificado pfx não pode ser vazia.', 400);
         }
         $this->checkCertificates($settings);
     }
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      * @return bool
      */
     private function checkCertificates(Settings $settings)
     {
-        $issetCertificate = $this->filesystem->exists($settings->certificate->folder . $settings->certificate->certFile);
+        $issetCertificate = $this->filesystem->exists($settings->getCertificateDirName() . $settings->getNameCertificateFile());
         if (!$issetCertificate) {
-            throw new Exception('Certificado ' . $settings->certificate->folder . $settings->certificate->certFile . ' não foi encontrado', 404);
+            throw new Exception('Certificado ' . $settings->getCertificateDirName() . $settings->getNameCertificateFile() . ' não foi encontrado', 404);
         }
         return true;
     }

@@ -3,7 +3,7 @@
 use Exception;
 use Nfse\Config\API;
 use Nfse\Config\Certificate;
-use Nfse\Models\Settings;
+use Nfse\Provider\Settings;
 use Nfse\Signature\Subscriber;
 
 class Boot
@@ -14,14 +14,14 @@ class Boot
     private $settings;
 
     /**
-     * @param Nfse\Models\Settings;
+     * @param Nfse\Provider\Settings;
      */
     public function __construct(Settings $settings)
     {
         try {
             $this->settings = $settings;
             $this->api = new API($this->settings);
-            $this->certificate = new Certificate($this->settings);
+            $this->certificate = new Certificate();
             $this->subscriber = new Subscriber($this->settings);
 
         } catch (Exception $e) {
@@ -36,13 +36,13 @@ class Boot
     {
         try {
             $directories = array(
-                $this->settings->storage . "/{$this->settings->environment}",
-                __DIR__ . "/../../Storage/{$this->settings->environment}",
+                $this->settings->getStorage() . "/{$this->settings->getEnvironment()}",
+                __DIR__ . "/../../Storage/{$this->settings->getEnvironment()}",
             );
 
             foreach ($directories as $directory) {
                 $issetFolders = $this->api->checkFolders($directory);
-                if(!$issetFolders){
+                if (!$issetFolders) {
                     $this->api->makeDirStorage($directory);
                 }
             }
